@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{43686CB0-BDC7-78D6-B0DE-2FF28A75E792}</ProjectGuid>
+	<ProjectGuid>{0C6361C8-3814-5F03-6565-D9E9DCC3B890}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,29 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRManager.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRPluginEvent.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRTracker.cs" />
-     <Compile Include="Assets\OVR\Scripts\OvrCapi.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRCrosshair.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRGUI.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRGamepadController.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRGridCube.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRMainMenu.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRPlayerController.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRVisionGuide.cs" />
-     <Compile Include="Assets\Scripts\Appear.cs" />
-     <Compile Include="Assets\Scripts\CameraMovement.cs" />
-     <Compile Include="Assets\Scripts\Fliparino.cs" />
-     <Compile Include="Assets\Scripts\OVRControlInterface.cs" />
-     <Compile Include="Assets\Scripts\OVRController.cs" />
-     <Compile Include="Assets\Scripts\PlayerScript.cs" />
-     <Compile Include="Assets\Scripts\SwitchTriggerScript.cs" />
-     <Compile Include="Assets\Scripts\WaterBehavior.cs" />
+     <Compile Include="Assets\OVR\Editor\OVRBuild.cs" />
+     <Compile Include="Assets\OVR\Editor\OVRGameView.cs" />
+     <Compile Include="Assets\OVR\Editor\OVRPlayerControllerEditor.cs" />
+     <Compile Include="Assets\OVR\Editor\OVRPrefabs.cs" />
+     <Compile Include="Assets\OVR\Editor\OVRShimLoader.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
@@ -78,10 +60,18 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{9650B61A-F1E3-3421-7D57-EAB4A386B9CA}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{9650B61A-F1E3-3421-7D57-EAB4A386B9CA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{43686CB0-BDC7-78D6-B0DE-2FF28A75E792}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
