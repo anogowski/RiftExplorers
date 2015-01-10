@@ -1,0 +1,112 @@
+fileFormatVersion: 2
+guid: d8531370690ca514fbfd56bb9cc696fb
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: belso
+    100002: box
+    100004: cone
+    100006: eye_left
+    100008: eye_right
+    100010: //RootNode
+    100012: gargoyle
+    100014: gargoyle1
+    100016: gargoyle1_MeshPart0
+    100018: gargoyle1_MeshPart1
+    100020: gargoyle1_MeshPart2
+    100022: gargoyle1_MeshPart3
+    100024: Object01
+    100026: transform1
+    100028: transform2
+    100030: transform3
+    100032: transform4
+    100034: transform5
+    100036: transform6
+    100038: transform7
+    400000: belso
+    400002: box
+    400004: cone
+    400006: eye_left
+    400008: eye_right
+    400010: gargoyle
+    400012: //RootNode
+    400014: gargoyle1
+    400016: gargoyle1_MeshPart0
+    400018: gargoyle1_MeshPart1
+    400020: gargoyle1_MeshPart2
+    400022: gargoyle1_MeshPart3
+    400024: Object01
+    400026: transform1
+    400028: transform2
+    400030: transform3
+    400032: transform4
+    400034: transform5
+    400036: transform6
+    400038: transform7
+    2300000: gargoyle1_MeshPart0
+    2300002: gargoyle1_MeshPart1
+    2300004: gargoyle1_MeshPart2
+    2300006: gargoyle1_MeshPart3
+    3300000: gargoyle1_MeshPart0
+    3300002: gargoyle1_MeshPart1
+    3300004: gargoyle1_MeshPart2
+    3300006: gargoyle1_MeshPart3
+    4300000: gargoyle1_MeshPart0
+    4300002: gargoyle1_MeshPart1
+    4300004: gargoyle1_MeshPart2
+    4300006: gargoyle1_MeshPart3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
