@@ -33,7 +33,6 @@ public class WaterBehavior : MonoBehaviour {
 			}
 			else 
 			{
-				Debug.Log (this.transform.position.y);
 				if (this.transform.position.y < 0.695f)
 				{
 					this.transform.position += new Vector3(0.0f, 0.005f,0f);
