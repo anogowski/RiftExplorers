@@ -22,24 +22,24 @@ public class WaterBehavior : MonoBehaviour {
 		{
 			if(this.gameObject.name.Equals("Wave"))
 			{
-				if (this.transform.position.y < 3.15f)
+				if (this.transform.position.y < 3.2f)
 				{
 					this.transform.position += new Vector3(0.0f, 0.05f,0f);
 				}
 				else
 				{
-					this.transform.position = new Vector3 (0f, 3.15f, 0f);
+					this.transform.position = new Vector3 (0f, 3.2f, 0f);
 				}
 			}
 			else 
 			{
-				if (this.transform.position.y < 0.695f)
+				if (this.transform.position.y < 1.6f)
 				{
-					this.transform.position += new Vector3(0.0f, 0.005f,0f);
+					this.transform.position += new Vector3(0.0f, 0.05f,0f);
 				}
 				else
 				{
-					this.transform.position = new Vector3 (0f, .695f, 0f);
+					this.transform.position = new Vector3 (0f, 1.6f, 0f);
 				}
 			}
 		}

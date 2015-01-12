@@ -17,14 +17,17 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(this.transform.position.y + 0.5f < WaterBehavior.waterHeight)
+		if(this.transform.position.y + 0.05f < WaterBehavior.waterHeight)
 		{
+            Debug.Log("Death");
 			death = true;
 		}
 		if(!death)
 		{
 			Movement ();
 		}
+        x = rigidbody.velocity.x;
+        y = rigidbody.velocity.y;
 
 	}
 
@@ -32,9 +35,12 @@ public class PlayerScript : MonoBehaviour {
 	{
 		GUI.Button (new Rect (5, 5, 200, 40), "CurrentSpeed for X: " + x);
 		GUI.Button (new Rect (5, 55, 200, 40), "CurrentSpeed for Y: " + y);
+        GUI.Button(new Rect(5, 105, 200, 40), "Player Height: " + this.transform.position.y);
+        GUI.Button(new Rect(5, 155, 200, 40), "Water Height: " + WaterBehavior.waterHeight);
 		if(death)
 		{
 			GUI.Button (new Rect (Screen.width * 0.4f, Screen.height * 0.1f, 200, 40), "You have died");
+            this.rigidbody.velocity = new Vector3(0f, 0f, 0f);
 		}
 		
 	}
@@ -73,9 +79,6 @@ public class PlayerScript : MonoBehaviour {
 		{
 			rigidbody.velocity = new Vector3(-MaxSpeed, 0f, 0f);
 		}
-		
-		x = rigidbody.velocity.x;
-		y = rigidbody.velocity.y;
 	}
 
 	bool isGrounded()
