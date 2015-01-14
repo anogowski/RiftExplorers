@@ -16,16 +16,16 @@ public class FloatingPlatforms : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-        if(WaterBehavior.waterHeight == 3.2f && Appear.Triggered)
+        if(WaterBehavior.waterHeight == 10.8f && Appear.Triggered)
         {
-            if (height < 0f)
+            if (height < 0.12f)
             {
                 this.transform.position += new Vector3(0f, 0.05f, 0f);
                 height += 0.05f;
             }
-            if(height > 0f)
+            if(height > 0.12f)
             {
-                height = 0.045f;
+                height = 0.12f;
                 this.transform.position = new Vector3(0.7f, height, -0.1f);
             }
         }

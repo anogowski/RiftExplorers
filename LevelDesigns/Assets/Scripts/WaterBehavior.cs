@@ -16,7 +16,7 @@ public class WaterBehavior : MonoBehaviour {
 	void Update () {
 		if(!Appear.Triggered)
 		{
-			this.transform.position += new Vector3 (0f, 0.001f, 0f);
+			this.transform.position += new Vector3 (0f, 0.01f, 0f);
 		}
 		if(Appear.Triggered)
 		{
@@ -39,7 +39,7 @@ public class WaterBehavior : MonoBehaviour {
 				}
 				else
 				{
-					this.transform.position = new Vector3 (0f, -0.3, 0f);
+					this.transform.position = new Vector3 (0f, -0.3f, 0f);
 				}
 			}
 		}

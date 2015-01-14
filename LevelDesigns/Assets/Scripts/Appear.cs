@@ -14,7 +14,7 @@ public class Appear : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(WaterBehavior.waterHeight == 3.2f && Triggered)
+        if (WaterBehavior.waterHeight == 10.8f && Triggered)
 		{
 			prefab.SetActive(true);
 		}
