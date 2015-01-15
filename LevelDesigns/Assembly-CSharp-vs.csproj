@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -64,8 +64,12 @@
      <Compile Include="Assets\Scripts\Appear.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ClosingDoor.cs" />
+     <Compile Include="Assets\Scripts\EventListener.cs" />
+     <Compile Include="Assets\Scripts\EventTrigger.cs" />
+     <Compile Include="Assets\Scripts\Events.cs" />
      <Compile Include="Assets\Scripts\Fliparino.cs" />
      <Compile Include="Assets\Scripts\FloatingPlatforms.cs" />
+     <Compile Include="Assets\Scripts\MazeManager.cs" />
      <Compile Include="Assets\Scripts\OVRControlInterface.cs" />
      <Compile Include="Assets\Scripts\OVRController.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
@@ -80,7 +84,7 @@
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
