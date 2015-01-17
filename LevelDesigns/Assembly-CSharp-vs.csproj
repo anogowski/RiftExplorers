@@ -65,8 +65,8 @@
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ClosingDoor.cs" />
      <Compile Include="Assets\Scripts\EventListener.cs" />
-     <Compile Include="Assets\Scripts\EventTrigger.cs" />
-     <Compile Include="Assets\Scripts\Events.cs" />
+     <Compile Include="Assets\Scripts\EventSender.cs" />
+     <Compile Include="Assets\Scripts\EventType.cs" />
      <Compile Include="Assets\Scripts\Fliparino.cs" />
      <Compile Include="Assets\Scripts\FloatingPlatforms.cs" />
      <Compile Include="Assets\Scripts\MazeManager.cs" />

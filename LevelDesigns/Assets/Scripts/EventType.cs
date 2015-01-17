@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System;
 
+
 namespace Event_System
 {
-    interface EventListener
+    enum EventType
     {
-       void React(EventType eventType);
+        Death, Checkpoint, DoorOpen, DoorClose
     }
 }
