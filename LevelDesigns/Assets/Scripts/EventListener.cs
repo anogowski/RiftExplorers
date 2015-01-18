@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System;
 
-namespace Event_System
+namespace EventSystem
 {
     interface EventListener
     {
-       void React(EventType eventType);
+        void React(EventType eventType);
     }
 }
+
+

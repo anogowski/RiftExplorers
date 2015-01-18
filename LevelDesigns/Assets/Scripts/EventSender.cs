@@ -2,21 +2,19 @@
 using System;
 using System.Collections.Generic;
 
-
-namespace Event_System
+namespace EventSystem
 {
-
-    class EventSender
+    class EventSender : MonoBehaviour
     {
-       List<EventListener> listeners = new List<EventListener>();
+        List<EventListener> listeners = new List<EventListener>();
 
-       public void Subscribe(EventListener l)
+        public void Subscribe(EventListener l)
         {
             listeners.Add(l);
         }
 
 
-       public void SendEvent(EventType type)
+        public void SendEvent(EventType type)
         {
             foreach (EventListener item in listeners)
             {
@@ -26,3 +24,4 @@ namespace Event_System
 
     }
 }
+

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System;
 
-
-namespace Event_System
+namespace EventSystem
 {
     enum EventType
     {
-        Death, Checkpoint, DoorOpen, DoorClose
+        Player_Death, Player_Alive, Checkpoint, Level_Complete, DoorOpen, DoorClose
     }
+
 }

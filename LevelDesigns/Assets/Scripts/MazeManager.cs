@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MazeManager : MonoBehaviour {
+public class MazeManager : GameManager {
 
 
 	// Use this for initialization
