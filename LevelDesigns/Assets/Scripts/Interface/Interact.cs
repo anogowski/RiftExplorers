@@ -1,0 +1,9 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public interface IInteractable
+{
+
+    void interact(GameObject user);
+    
+}

@@ -4,6 +4,7 @@
  All rights are reserved by Copyright of Oculus VR, LLC.
 
 ************************************************************************************/
+#pragma warning disable 0414
 
 using UnityEngine;
 using System.Collections;
