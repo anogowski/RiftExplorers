@@ -32,6 +32,9 @@ public class Counter : MonoBehaviour, EventSystem.EventListener {
             case EventSystem.EventType.Player_Alive:
                 s.Start();
                 break;
+            case EventSystem.EventType.Level_Start:
+                s.Stop();
+                break;
             case EventSystem.EventType.Level_Complete:
                 s.Stop();
                     break;
