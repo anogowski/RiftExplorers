@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour, EventSystem.EventListener
 {
 
     int attempts = 1;
-    TimeSpan currentTime;
-    TimeSpan compeletionTime;
-    TimeSpan bestTime = TimeSpan.FromHours(1);
+    int currentTime;
+    int compeletionTime;
+    int bestTime =3600;
     public static Counter c = new Counter();
    public GameManager ()
     {
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour, EventSystem.EventListener
 	// Update is called once per frame
 	void Update ()
     {
-        currentTime = c.currentTime;
+        currentTime = c.currentTime.Seconds;
 	}
 
 
@@ -40,13 +40,21 @@ public class GameManager : MonoBehaviour, EventSystem.EventListener
                 break;
             case EventSystem.EventType.Checkpoint:
                 break;
+            case EventSystem.EventType.Level_Start:
+                bestTime = PlayerPrefs.GetInt("bestTime", 3600);
+                break;
             case EventSystem.EventType.Level_Complete:
                 {
                     compeletionTime =currentTime;
+                 
                     if (compeletionTime < bestTime)
                     {
                         bestTime = compeletionTime;
+                        PlayerPrefs.SetInt("bestTime", bestTime);
                     }
+                    PlayerPrefs.Save();
+                    string[] lines = { "Player Data", "Best Time: " + PlayerPrefs.GetInt("bestTime", 3600) };
+                    System.IO.File.WriteAllLines(Application.persistentDataPath + "\\SampleFile.txt", lines);
                 }
                 break;
             case EventSystem.EventType.DoorOpen:
