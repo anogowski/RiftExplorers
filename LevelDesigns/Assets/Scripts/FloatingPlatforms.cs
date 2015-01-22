@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FloatingPlatforms : MonoBehaviour {
 
-	public static float height = -1.0f;
+	public static float height = 20.3f;
     private bool Spawn = false;
     //public GameObject prefab;
 	// Use this for initialization
@@ -16,19 +16,36 @@ public class FloatingPlatforms : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-        if(WaterBehavior.waterHeight == 10.8f && Appear.Triggered)
+        //without water
+        if(Appear.Triggered)
         {
-            if (height < 0.12f)
+            if (height < 28.3f)
             {
                 this.transform.position += new Vector3(0f, 0.05f, 0f);
                 height += 0.05f;
             }
-            if(height > 0.12f)
+            if(height > 28.3f)
             {
-                height = 0.12f;
+                height = 28.3f;
                 this.transform.position = new Vector3(0.7f, height, -0.1f);
             }
         }
+        //with water
+        //if (WaterBehavior.waterHeight == 10.8f && Appear.Triggered)
+        //{
+        //    if (height < 0.12f)
+        //    {
+        //        this.transform.position += new Vector3(0f, 0.05f, 0f);
+        //        height += 0.05f;
+        //    }
+        //    if (height > 0.12f)
+        //    {
+        //        height = 0.12f;
+        //        this.transform.position = new Vector3(0.7f, height, -0.1f);
+        //    }
+        //}
+
+
         //if(!Appear.Triggered)
         //{
         //    if (this.transform.position.y < 3.2f)

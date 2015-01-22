@@ -1,13 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="s:\Unity\Room Escape\LevelDesigns\Assets\OVR\Scripts\OVRCommon.cs">
     <Files>
-      <File FileName="Assets\Scripts\OVRControlInterface.cs" Line="30" Column="31" />
+      <File FileName="Assets\Scripts\FloatingPlatforms.cs" Line="20" Column="10" />
+      <File FileName="Assets\Scripts\OVRControlInterface.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fliparino.cs" Line="1" Column="1" />
       <File FileName="Assets\OVR\Editor\OVRGameView.cs" Line="1" Column="1" />
       <File FileName="Assets\OVR\Scripts\OVRManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\WaterBehavior.cs" Line="1" Column="1" />
-      <File FileName="s:\Unity\Room Escape\LevelDesigns\Assets\OVR\Scripts\OVRCommon.cs" Line="98" Column="3" />
+      <File FileName="s:\Unity\Room Escape\LevelDesigns\Assets\OVR\Scripts\OVRCommon.cs" Line="95" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
