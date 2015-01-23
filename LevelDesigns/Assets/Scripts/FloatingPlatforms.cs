@@ -9,7 +9,7 @@ public class FloatingPlatforms : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		this.transform.position = new Vector3 (0.7f, height, -0.1f);
+        this.transform.position = new Vector3(this.transform.position.x, height, this.transform.position.z);
 		//this.transform.position.y = height;
 	}
 	
@@ -27,7 +27,7 @@ public class FloatingPlatforms : MonoBehaviour {
             if(height > 28.3f)
             {
                 height = 28.3f;
-                this.transform.position = new Vector3(0.7f, height, -0.1f);
+                this.transform.position = new Vector3(this.transform.position.x, height, this.transform.position.z);
             }
         }
         //with water
