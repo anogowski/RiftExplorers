@@ -13,4 +13,10 @@ public class MazeManager : GameManager {
 	void Update () {
 
 	}
+    
+    void OnGUI()
+    {
+        GUI.Button(new Rect(500, 500, 200, 40), "CurrentSpeed for X: ");
+        GUI.Button(new Rect(500, 550, 200, 40), "CurrentSpeed for Y: ");
+    }
 }
