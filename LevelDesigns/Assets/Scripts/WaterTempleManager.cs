@@ -8,11 +8,14 @@ public class WaterTempleManager : MonoBehaviour
     GameObject player;
     OVRInterface playerControl;
 
+    private bool waterActive;
+
     // Use this for initialization
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerControl = player.GetComponent<OVRInterface>();
+        waterActive = false;
     }
 
     // Update is called once per frame
@@ -24,6 +27,14 @@ public class WaterTempleManager : MonoBehaviour
             Vector3 position = player.transform.position;
             Debug.Log("Interaction called");
             interacte(forward, position);
+        }
+
+        Transform hookShot = player.transform.FindChild("Left_Hand").FindChild("HookShot");
+
+        if ((hookShot != null) && !waterActive)
+        {
+            waterActive = true;
+            //activateWater();
         }
     }
 
@@ -50,5 +61,20 @@ public class WaterTempleManager : MonoBehaviour
         {
             //Debug.Log("No interactable Object was hit");
         }
+    }
+
+    private void activateWater()
+    {
+        Debug.Log("Activating water");
+
+       GameObject wave = GameObject.FindGameObjectWithTag("Water");
+       Transform wave1 = wave.transform.FindChild("Wave");
+       Transform wave2 = wave.transform.FindChild("Wave2");
+
+       wave1.GetComponent<WaterSimple>().enabled = true;
+       wave1.GetComponent<WaterBehavior>().enabled = true;
+
+       wave2.GetComponent<Fliparino>().enabled = true;
+       wave2.GetComponent<WaterBehavior>().enabled = true;
     }
 }

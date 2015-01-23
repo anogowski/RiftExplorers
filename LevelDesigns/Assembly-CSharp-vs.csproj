@@ -64,10 +64,16 @@
      <Compile Include="Assets\Scripts\Appear.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ClosingDoor.cs" />
+     <Compile Include="Assets\Scripts\Counter.cs" />
+     <Compile Include="Assets\Scripts\EventListener.cs" />
+     <Compile Include="Assets\Scripts\EventSender.cs" />
+     <Compile Include="Assets\Scripts\EventType.cs" />
      <Compile Include="Assets\Scripts\Fliparino.cs" />
      <Compile Include="Assets\Scripts\FloatingPlatforms.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HookShot.cs" />
      <Compile Include="Assets\Scripts\Interface\Interact.cs" />
+     <Compile Include="Assets\Scripts\MazeManager.cs" />
      <Compile Include="Assets\Scripts\OVRControlInterface.cs" />
      <Compile Include="Assets\Scripts\OVRController.cs" />
      <Compile Include="Assets\Scripts\OVRInterface.cs" />
