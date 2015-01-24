@@ -16,7 +16,7 @@ public class HookShot : MonoBehaviour, IInteractable
     private float startTime;
     private float fullLength;
 
-    private GameObject user;
+    private OVRInterface user;
 
 	// Use this for initialization
 	void Start ()
@@ -90,9 +90,14 @@ public class HookShot : MonoBehaviour, IInteractable
     public void interact(GameObject user)
     {
         //Debug.Log("Hook interact with hook shot");
-        disableColition();
-        this.user = user;
-        pickup(user.transform.Find("Left_Hand"));
+        if (user.tag.Equals("Player"))
+        {
+
+            disableColition();
+            this.user = (OVRInterface) GameObject.FindGameObjectWithTag("Player").GetComponent<OVRInterface>();
+            this.user.pickUP(Hand.Left, this.gameObject);
+            
+        }
 
     }
 

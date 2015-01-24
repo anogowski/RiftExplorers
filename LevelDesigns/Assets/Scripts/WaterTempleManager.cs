@@ -29,7 +29,7 @@ public class WaterTempleManager : MonoBehaviour
             interacte(forward, position);
         }
 
-        Transform hookShot = player.transform.FindChild("Left_Hand").FindChild("HookShot");
+        Transform hookShot = GameObject.FindGameObjectWithTag("Left_Hand").transform.FindChild("HookShot");
 
         if ((hookShot != null) && !waterActive)
         {

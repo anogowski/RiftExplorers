@@ -1,21 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Hand
+{
+    Left,
+    right
+}
+
 public class OVRInterface : MonoBehaviour
 {
 
     public float rotationRachet;
 
     private OVRCameraRig cameraRig;
+    GameObject Left_Hand;
+    GameObject Right_Hand;
     OVRPlayerController OVRContr;
 
     // Use this for initialization
     void Start()
     {
-        cameraRig = GameObject.FindObjectOfType(typeof(OVRCameraRig)) as OVRCameraRig;
-       OVRContr = this.transform.gameObject.GetComponent<OVRPlayerController>();
+       cameraRig = GameObject.FindObjectOfType(typeof(OVRCameraRig)) as OVRCameraRig;
+       OVRContr  = this.transform.gameObject.GetComponent<OVRPlayerController>();
+       Left_Hand = GameObject.FindGameObjectWithTag("Left_Hand");
+       Right_Hand = GameObject.FindGameObjectWithTag("Right_Hand");
     }
 
+    public void pickUP(Hand hand, GameObject obj)
+    {
+        if (hand == Hand.Left)
+        {
+            obj.transform.parent = Left_Hand.transform;
+        }
+        else if(hand == Hand.right)
+        {
+            obj.transform.parent = Left_Hand.transform;
+        }
+    }
 
     // Update is called once per frame
     void Update()
