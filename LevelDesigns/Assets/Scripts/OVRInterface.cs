@@ -12,6 +12,8 @@ public class OVRInterface : MonoBehaviour
 
     public float rotationRachet;
 
+    public GUIv1 guiInterface;
+
     private OVRCameraRig cameraRig;
     GameObject Left_Hand;
     GameObject Right_Hand;

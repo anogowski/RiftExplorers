@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\SoundSystem\Sounds.cs" />
      <Compile Include="Assets\Scripts\SwitchTriggerScript.cs" />
      <Compile Include="Assets\Scripts\TempStuff\TempDoorToMaze.cs" />
+     <Compile Include="Assets\Scripts\UI\GUIv1.cs" />
      <Compile Include="Assets\Scripts\WaterBehavior.cs" />
      <Compile Include="Assets\Scripts\WaterTempleManager.cs" />
      <Compile Include="Assets\Scripts\WaterToHallDoor.cs" />
