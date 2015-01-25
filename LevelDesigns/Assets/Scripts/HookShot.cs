@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HookShot : MonoBehaviour, IInteractable
 {
-
+    AudioSource chainSound;
     public bool lerping;
 
     public float speed;
@@ -36,7 +36,9 @@ public class HookShot : MonoBehaviour, IInteractable
             {
                 lerping = false;
                 targetPosition = Vector3.zero;
+                AudioManager.Instance.StopSound(chainSound);
             }
+           
         }
         else
         {
@@ -48,8 +50,10 @@ public class HookShot : MonoBehaviour, IInteractable
                 targetPosition = getTargetPosition(user.transform.position, ovrInt.getForward());
                 if (targetPosition != Vector3.zero)
                 {
+                 
                     lerping = true;
                     fullLength = Vector3.Magnitude(startPosition - targetPosition);
+                   PlayChainSound();
                 }
                 else
                 {
@@ -73,7 +77,7 @@ public class HookShot : MonoBehaviour, IInteractable
                 Debug.Log("Hook-Loop found");
             }
         }
-
+        AudioManager.Instance.PlaySounds(Sounds.Clang, SoundActions.Play, targetPoint);
         return targetPoint;
     }
 
@@ -99,6 +103,12 @@ public class HookShot : MonoBehaviour, IInteractable
             
         }
 
+    }
+
+    private void PlayChainSound()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        AudioManager.Instance.PlaySounds(Sounds.Chain, SoundActions.Loop, player.transform.position);
     }
 
     private void disableColition()

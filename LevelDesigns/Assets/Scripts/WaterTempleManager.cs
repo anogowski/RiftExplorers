@@ -26,8 +26,6 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
     }
     void Start()
     {
-   
-
         player = GameObject.FindGameObjectWithTag("Player");
         playerControl = player.GetComponent<OVRInterface>();
         waterActive = false;
@@ -45,9 +43,9 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
                    bestTime = PlayerPrefs.GetInt("bestTime", 3600);
                 break;
             case EventSystem.EventType.Player_Alive:
-                Debug.Log("Player Alive");
                 break;
             case EventSystem.EventType.Get_Item:
+                AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position);
                 break;
             case EventSystem.EventType.Hit_Hookloop:
                 break;

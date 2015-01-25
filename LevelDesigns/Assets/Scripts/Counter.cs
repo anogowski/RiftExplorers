@@ -12,7 +12,7 @@ public class Counter : MonoBehaviour, EventSystem.EventListener {
 	public void Update() 
     {
         currentTime =s.Elapsed.Seconds;
-        UnityEngine.Debug.Log(currentTime);
+        //UnityEngine.Debug.Log(currentTime);
 	}
 
     void EventListener.React(EventSystem.EventType eventType)
@@ -20,7 +20,7 @@ public class Counter : MonoBehaviour, EventSystem.EventListener {
         switch (eventType)
         {
             case EventSystem.EventType.Player_Alive:
-               UnityEngine.Debug.Log("Start Timer");
+               //UnityEngine.Debug.Log("Start Timer");
                 s.Start();
                 break;
             case EventSystem.EventType.Player_Death:
