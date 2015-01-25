@@ -108,7 +108,7 @@ public class HookShot : MonoBehaviour, IInteractable
     private void PlayChainSound()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        AudioManager.Instance.PlaySounds(Sounds.Chain, SoundActions.Loop, player.transform.position);
+       chainSound =  AudioManager.Instance.PlaySounds(Sounds.Chain, SoundActions.Loop, player.transform.position);
     }
 
     private void disableColition()
