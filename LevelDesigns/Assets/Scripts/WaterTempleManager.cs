@@ -90,7 +90,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
         counter.Update();
        currentTime = counter.currentTime;
         //Debug.Log(counter.currentTime);
-        if (Input.GetKeyDown(KeyCode.E))
+        if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.interact))
         {
             Vector3 forward = playerControl.getForward();
             Vector3 position = playerControl.getPosition();
