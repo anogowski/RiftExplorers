@@ -5,7 +5,7 @@ namespace EventSystem
 {
     enum EventType
     {
-        Player_Death, Player_Alive, Checkpoint, Level_Start, Level_Complete, DoorOpen, DoorClose
+       Level_Start, Player_Alive, Get_Item, Hit_Hookloop, Move_To_Hookloop, ActivateTrap, Player_Death, Checkpoint,  Level_Complete, DoorOpen, DoorClose
     }
 
 }

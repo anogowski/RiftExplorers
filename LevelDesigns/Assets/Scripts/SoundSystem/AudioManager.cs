@@ -11,6 +11,9 @@ public class AudioManager : Singleton<AudioManager>
     {
         clips.Add((AudioClip)Resources.Load("Hallelujah", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("rushing_water", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("Fanfare", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("Clang", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("Hookshot", typeof(AudioClip)));
 
     }
 
@@ -18,6 +21,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         AudioClip clip = new AudioClip();
         AudioSource source =  new AudioSource();
+
         switch (sound)
         {
             case Sounds.Hallelujah:
@@ -25,6 +29,15 @@ public class AudioManager : Singleton<AudioManager>
                 break;
             case Sounds.Water:
                 clip = clips.Find(n => n.name.Equals("rushing_water"));
+                break;
+            case Sounds.GetItem:
+                clip = clips.Find(n => n.name.Equals("Fanfare"));
+                break;
+            case Sounds.Clang:
+                clip = clips.Find(n => n.name.Equals("Clang"));
+                break;
+            case Sounds.Chain:
+                clip = clips.Find(n => n.name.Equals("Hookshot"));
                 break;
             case Sounds.JamieScream:
                 break;
