@@ -24,8 +24,8 @@ public class WaterTempleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Vector3 forward = playerControl.getForward();
-            Vector3 position = player.transform.position;
-            Debug.Log("Interaction called");
+            Vector3 position = playerControl.getPosition();
+            //Debug.Log("Interaction called");
             interacte(forward, position);
         }
 
@@ -65,7 +65,7 @@ public class WaterTempleManager : MonoBehaviour
 
     private void activateWater()
     {
-        Debug.Log("Activating water");
+       Debug.Log("Activating water");
 
        GameObject wave = GameObject.FindGameObjectWithTag("Water");
        Transform wave1 = wave.transform.FindChild("Wave");

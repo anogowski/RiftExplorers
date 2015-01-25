@@ -21,7 +21,7 @@ public class HookShot : MonoBehaviour, IInteractable
 	// Use this for initialization
 	void Start ()
     {
-	    
+	   
 	}
 	
 	// Update is called once per frame
@@ -99,13 +99,6 @@ public class HookShot : MonoBehaviour, IInteractable
             
         }
 
-    }
-
-    private void pickup(Transform hand)
-    {
-        this.transform.parent = hand;
-        this.transform.localPosition = Vector3.zero;
-        this.transform.localRotation = Quaternion.identity;
     }
 
     private void disableColition()
