@@ -55,10 +55,9 @@ public class OVRInterface : MonoBehaviour
 
     private void keyboardInput()
     {
-        bool escape = Input.GetKey(KeyCode.Escape) || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.Start);
+        bool escape = ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.escape);
         if(escape)
         {
-
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
             #else
@@ -83,25 +82,9 @@ public class OVRInterface : MonoBehaviour
     //Interface to OVR Controller
     private void movement()
     {
-        bool jump = Input.GetKey(KeyCode.Space) || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.Start);
-        bool rotateR = Input.GetKey(KeyCode.E);
-        bool rotateL = Input.GetKey(KeyCode.Q);
-
-        if (jump)
+        if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.jump))
         {
             OVRContr.Jump();
-        }
-
-        if (rotateR)
-        {
-            OVRContr.YRotation += rotationRachet;
-            //Debug.Log("rotateR");
-        }
-
-        if (rotateL)
-        {
-            OVRContr.YRotation -= rotationRachet;
-            // Debug.Log("rotateL");
         }
     }
 }

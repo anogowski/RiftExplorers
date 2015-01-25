@@ -40,7 +40,7 @@ public class HookShot : MonoBehaviour, IInteractable
         }
         else
         {
-            if (!lerping && Input.GetMouseButtonDown(0) && user != null)
+            if (!lerping && ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.fire) && user != null)
             {
                 startTime = Time.time;
                 startPosition = user.transform.position;
