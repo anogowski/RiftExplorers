@@ -101,7 +101,7 @@ public class HookShot : MonoBehaviour, IInteractable
             this.user = (OVRInterface) GameObject.FindGameObjectWithTag("Player").GetComponent<OVRInterface>();
             this.user.pickUP(Hand.Left, this.gameObject);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            AudioManager.Instance.PlaySounds(Sounds.Clang, SoundActions.Play, player.transform.position);
+            AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position);
 
         }
 
