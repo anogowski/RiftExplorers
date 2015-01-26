@@ -75,9 +75,9 @@ public class HookShot : MonoBehaviour, IInteractable
             {
                 targetPoint = hit.transform.position;
                 Debug.Log("Hook-Loop found");
+                AudioManager.Instance.PlaySounds(Sounds.Clang, SoundActions.Play, targetPoint);
             }
         }
-        AudioManager.Instance.PlaySounds(Sounds.Clang, SoundActions.Play, targetPoint);
         return targetPoint;
     }
 
@@ -100,7 +100,9 @@ public class HookShot : MonoBehaviour, IInteractable
             disableColition();
             this.user = (OVRInterface) GameObject.FindGameObjectWithTag("Player").GetComponent<OVRInterface>();
             this.user.pickUP(Hand.Left, this.gameObject);
-            
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position);
+
         }
 
     }
