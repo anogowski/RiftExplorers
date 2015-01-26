@@ -14,6 +14,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
     public float distanceOut;
     GameObject player;
     OVRInterface playerControl;
+    GUIv1 playerGUI;
     private bool waterActive;
     // Use this for initialization
 
@@ -28,6 +29,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerControl = player.GetComponent<OVRInterface>();
+        playerGUI = GameObject.FindGameObjectWithTag("UI").GetComponent<GUIv1>();
         waterActive = false;
 
         //water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
@@ -46,12 +48,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
                 break;
             case EventSystem.EventType.Get_Item:
                 AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position);
-                break;
-            case EventSystem.EventType.Hit_Hookloop:
-                break;
-            case EventSystem.EventType.Move_To_Hookloop:
-                break;
-            case EventSystem.EventType.ActivateTrap:
+                playerGUI.setCrossHairVisable(true);
                 break;
             case EventSystem.EventType.Player_Death:
                 attempts++;
@@ -120,6 +117,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
                 {
                     IInteractable interactable = (IInteractable)m;
                     interactable.interact(player);
+                    eventSender.SendEvent(EventSystem.EventType.Get_Item);
                     //Debug.Log("Found interactable Object");
                 }
             }

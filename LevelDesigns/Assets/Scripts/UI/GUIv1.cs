@@ -9,7 +9,7 @@ public class GUIv1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        //setCrossHairVisable(false);
+        setCrossHairVisable(false);
 	}
 	
 	// Update is called once per frame
