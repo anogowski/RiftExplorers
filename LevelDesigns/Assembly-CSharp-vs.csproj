@@ -91,8 +91,11 @@
      <Compile Include="Assets\Scripts\SoundSystem\Sounds.cs" />
      <Compile Include="Assets\Scripts\SwitchTriggerScript.cs" />
      <Compile Include="Assets\Scripts\TempStuff\TempDoorToMaze.cs" />
+     <Compile Include="Assets\Scripts\Text\ClearSignTitle.cs" />
      <Compile Include="Assets\Scripts\Text\Count_Death.cs" />
      <Compile Include="Assets\Scripts\Text\DisplayText.cs" />
+     <Compile Include="Assets\Scripts\Text\HookshotInstuctions.cs" />
+     <Compile Include="Assets\Scripts\Text\InstructionsTitle.cs" />
      <Compile Include="Assets\Scripts\UI\GUIv1.cs" />
      <Compile Include="Assets\Scripts\WaterBehavior.cs" />
      <Compile Include="Assets\Scripts\WaterTempleManager.cs" />

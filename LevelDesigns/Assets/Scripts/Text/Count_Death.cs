@@ -7,14 +7,14 @@ public class Count_Death : DisplayText
     string best = "";
     public void Start()
     {
-        best += "Best Time:\t" + PlayerPrefs.GetInt("bestTime", 3600) + "\n";
+        best += "Best Time:\t" + PlayerPrefs.GetInt("bestTime", 3600) + " seconds\n";
         best += "Best Attempt(s):\t" + PlayerPrefs.GetInt("bestAttempts", 100) + "\n";
     }
 
     void Update()
     {
-        string currentTime = "CurrentTime:\t" + WaterTempleManager.Instance.currentTime + "\n";
-        string currentAttempts = "CurrentAttempt(s):\t" + WaterTempleManager.Instance.attempts + "\n";
+        string currentTime = "Your Time:\t" + WaterTempleManager.Instance.currentTime + " seconds\n";
+        string currentAttempts = "Your Attempt(s):\t" + WaterTempleManager.Instance.attempts;
 
         textToDisplay = best + currentTime + currentAttempts;
         textComponent.text = textToDisplay ;
