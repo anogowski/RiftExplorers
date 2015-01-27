@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Appear.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ClosingDoor.cs" />
+     <Compile Include="Assets\Scripts\CompletedLevelScript.cs" />
      <Compile Include="Assets\Scripts\Counter.cs" />
      <Compile Include="Assets\Scripts\EventSystem\EventListener.cs" />
      <Compile Include="Assets\Scripts\EventSystem\EventSender.cs" />

@@ -8,7 +8,8 @@ public class HookshotInstuctions : DisplayText
 	void Start ()
     {
 	    textToDisplay += "X Button:\tPick Up\n";
-        textToDisplay += "Right Bumper:\tFire";
+        textToDisplay += "Right Trigger:\tFire\n";
+        textToDisplay += "Aim for the red hookloops";
 	}
 
 }
