@@ -2,8 +2,13 @@
 using System.Collections;
 using EventSystem;
 
-public class WaterTempleManager : GameManager, EventSystem.EventListener
+public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.EventListener
 {
+    public int attempts = 1;
+    public int currentTime;
+    public int compeletionTime;
+    public int bestTime = 3600;
+
     Counter counter = new Counter();
     AudioSource chainSound;
     AudioSource water;
@@ -64,8 +69,13 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
                         bestTime = compeletionTime;
                         PlayerPrefs.SetInt("bestTime", bestTime);
                     }
+                   int bestAttempts = PlayerPrefs.GetInt("bestAttempts", 100);
+                    if (attempts <= bestAttempts)
+                    {
+                        PlayerPrefs.SetInt("bestAttempts", attempts);
+                    }
                     PlayerPrefs.Save();
-                    string[] lines = { "PlayerData", "Best Time: " + PlayerPrefs.GetInt("bestTime", 3600) };
+                    string[] lines = { "PlayerData", "Best Time: " + PlayerPrefs.GetInt("bestTime", 3600) + "", "Best Attempts: ", PlayerPrefs.GetInt("bestAttempts", 100) + "" };
                     System.IO.File.WriteAllLines(Application.persistentDataPath + "\\SaveFile.txt", lines);
                 }
                 break;

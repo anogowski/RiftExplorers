@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DisplayText : MonoBehaviour 
 {
     public string textToDisplay;
-    private Text textComponent;
+    public Text textComponent;
     void Awake()
     {
         textComponent = GetComponent<Text>();
