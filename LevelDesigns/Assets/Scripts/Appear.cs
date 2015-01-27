@@ -18,9 +18,6 @@ public class Appear : MonoBehaviour {
 		{
 			prefab.SetActive(true);
 		}
-        if(prefab.activeInHierarchy && !Triggered)
-        {
-            prefab.SetActive(false);
-        }
+        
 	}
 }

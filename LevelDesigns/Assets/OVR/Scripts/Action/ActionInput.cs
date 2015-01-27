@@ -19,7 +19,7 @@ public class ActionInput : Singleton<ActionInput>
     {
         trackingActions[ActionsToTrack.jump]     = Input.GetKey(KeyCode.Space)  || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.A);
         trackingActions[ActionsToTrack.interact] = Input.GetKey(KeyCode.E)      || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.X);
-        trackingActions[ActionsToTrack.fire]     = Input.GetMouseButtonDown(0)  || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.R1);
+        trackingActions[ActionsToTrack.fire]     = Input.GetMouseButtonDown(0)  || (OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightTrigger) > 0.0f);
         trackingActions[ActionsToTrack.escape]   = Input.GetKey(KeyCode.Escape) || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.Start);
     }
 
