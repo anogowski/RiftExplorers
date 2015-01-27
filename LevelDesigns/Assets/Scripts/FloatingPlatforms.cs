@@ -16,6 +16,10 @@ public class FloatingPlatforms : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+        if(!Appear.Triggered)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, 20.3f, this.transform.position.z);
+        }
         //without water
         if(Appear.Triggered)
         {

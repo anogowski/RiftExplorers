@@ -16,30 +16,31 @@ public class WaterBehavior : MonoBehaviour {
 	void Update () {
 		if(!Appear.Triggered)
 		{
-			this.transform.position += new Vector3 (0f, 0.01f, 0f);
+			this.transform.position += new Vector3 (0f, 0.005f, 0f);
 		}
 		if(Appear.Triggered)
 		{
 			if(this.gameObject.name.Equals("Wave"))
 			{
-				if (this.transform.position.y < 38.75f)
+				if (this.transform.position.y < 39f)
 				{
-					this.transform.position += new Vector3(0.0f, 0.05f,0f);
+					this.transform.position += new Vector3(0.0f, 0.1f,0f);
 				}
 				else
 				{
-					this.transform.position = new Vector3 (0f, 38.75f, 0f);
+                    AudioManager.Instance.StopSound(WaterTempleManager.Instance.water);           
+					this.transform.position = new Vector3 (0f, 39f, 0f);
 				}
 			}
 			else 
 			{
-				if (this.transform.position.y < -7.25f)
+				if (this.transform.position.y < -7f)
 				{
-					this.transform.position += new Vector3(0.0f, 0.05f,0f);
+					this.transform.position += new Vector3(0.0f, 0.1f,0f);
 				}
 				else
 				{
-					this.transform.position = new Vector3 (0f, -7.25f, 0f);
+					this.transform.position = new Vector3 (0f, -7f, 0f);
 				}
 			}
 		}

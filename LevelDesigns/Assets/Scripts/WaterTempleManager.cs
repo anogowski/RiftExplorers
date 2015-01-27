@@ -11,16 +11,17 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
     Counter counter = new Counter();
     AudioSource chainSound;
-    AudioSource water;
+    public AudioSource water;
     EventSender eventSender = new EventSender();
     public bool playerAlive = true;
-
 
     public float distanceOut;
     GameObject player;
     OVRInterface playerControl;
     GUIv1 playerGUI;
     private bool waterActive;
+
+    private Vector3 originalPlayerPos;
     // Use this for initialization
 
     void Awake()
@@ -33,6 +34,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        originalPlayerPos = player.transform.position;
         playerControl = player.GetComponent<OVRInterface>();
         playerGUI = GameObject.FindGameObjectWithTag("UI").GetComponent<GUIv1>();
         waterActive = false;
@@ -74,6 +76,9 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                     {
                         PlayerPrefs.SetInt("bestAttempts", attempts);
                     }
+                    //use to reset best values
+                    //PlayerPrefs.SetInt("bestTime", 3600);
+                    //PlayerPrefs.SetInt("bestAttempts", 100);
                     PlayerPrefs.Save();
                     string[] lines = { "PlayerData", "Best Time: " + PlayerPrefs.GetInt("bestTime", 3600) + "", "Best Attempts: ", PlayerPrefs.GetInt("bestAttempts", 100) + "" };
                     System.IO.File.WriteAllLines(Application.persistentDataPath + "\\SaveFile.txt", lines);
@@ -110,12 +115,14 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         {
             waterActive = true;
 
-            //activateWater();
+            activateWater();
+            water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
         }
         
-        if (!waterActive)
+        if(waterActive)
         {
-            //AudioManager.Instance.StopSound(water);
+            checkForDeath();
+            checkForComplete();
         }
     }
 
@@ -151,7 +158,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
        GameObject wave = GameObject.FindGameObjectWithTag("Water");
        Transform wave1 = wave.transform.FindChild("Wave");
-       Transform wave2 = wave.transform.FindChild("Wave2");
+       Transform wave2 = wave.transform.FindChild("Water2");
 
        wave1.GetComponent<WaterSimple>().enabled = true;
        wave1.GetComponent<WaterBehavior>().enabled = true;
@@ -159,6 +166,39 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
        wave2.GetComponent<Fliparino>().enabled = true;
        wave2.GetComponent<WaterBehavior>().enabled = true;
 
-       water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
+    }
+
+    private void checkForDeath()
+    {
+        GameObject wave = GameObject.FindGameObjectWithTag("Water");
+        Transform wave1 = wave.transform.FindChild("Wave");
+        Transform wave2 = wave.transform.FindChild("Water2");
+
+        if(player.transform.position.y > wave1.transform.position.y)
+        {
+            Debug.Log("Not dead yet");
+        }
+        else if(player.transform.position.y+0.545f <= wave1.transform.position.y)
+        {
+            Debug.Log("You're dead");
+            player.transform.position = originalPlayerPos;
+            wave1.transform.position = new Vector3(wave1.transform.position.x, -54.3f, wave1.transform.position.z);
+            wave2.transform.position = new Vector3(wave1.transform.position.x, -100.7f, wave1.transform.position.z);
+            Appear.Triggered = false;
+
+            eventSender.SendEvent(EventSystem.EventType.Player_Death);
+            //Debug.Log("Counter: " + attempts);
+
+            //have fade out here
+            eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+        }
+    }
+
+    private void checkForComplete()
+    {
+        if(CompletedLevelScript.completed)
+        {
+            eventSender.SendEvent(EventSystem.EventType.Level_Complete);
+        }
     }
 }

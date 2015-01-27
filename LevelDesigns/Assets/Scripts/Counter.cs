@@ -11,7 +11,7 @@ public class Counter : MonoBehaviour, EventSystem.EventListener {
 	// Update is called once per frame
 	public void Update() 
     {
-        currentTime =s.Elapsed.Seconds;
+        currentTime = (int)s.Elapsed.TotalSeconds;
         //UnityEngine.Debug.Log(currentTime);
 	}
 
