@@ -14,10 +14,11 @@ public class AudioManager : Singleton<AudioManager>
         clips.Add((AudioClip)Resources.Load("Fanfare", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("Clang", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("Hookshot", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("water_temple", typeof(AudioClip)));
 
     }
 
-    public AudioSource PlaySounds(Sounds sound, SoundActions action, Vector3 position)
+    public AudioSource PlaySounds(Sounds sound, SoundActions action, Vector3 position, float volume = 0.5f)
     {
         AudioClip clip = new AudioClip();
         AudioSource source =  new AudioSource();
@@ -26,6 +27,9 @@ public class AudioManager : Singleton<AudioManager>
         {
             case Sounds.Hallelujah:
                 clip = clips.Find(n => n.name.Equals("Hallelujah"));
+                break;
+            case Sounds.WaterTempleTheme:
+                clip = clips.Find(n => n.name.Equals("water_temple"));
                 break;
             case Sounds.Water:
                 clip = clips.Find(n => n.name.Equals("rushing_water"));
@@ -48,12 +52,12 @@ public class AudioManager : Singleton<AudioManager>
         switch (action)
         {
             case SoundActions.Play:
-                source = Play(clip, position);
+                source = Play(clip, position, volume);
                 break;
             case SoundActions.Play_Emitter:
                 break;
             case SoundActions.Loop:
-                source = PlayLoop(clip, Vector3.zero);
+                source = PlayLoop(clip, Vector3.zero, volume);
                 break;
             case SoundActions.Loop_Emitter:
                 break;

@@ -32,7 +32,8 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
         playerGUI = GameObject.FindGameObjectWithTag("UI").GetComponent<GUIv1>();
         waterActive = false;
 
-        //water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
+        AudioManager.Instance.PlaySounds(Sounds.WaterTempleTheme, SoundActions.Loop, Vector3.zero);
+
 
 
     }
@@ -82,7 +83,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
     // Update is called once per frame
     void Update()
     {
-        counter.Update();
+       counter.Update();
        currentTime = counter.currentTime;
         //Debug.Log(counter.currentTime);
         if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.interact))
@@ -98,7 +99,13 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
         if ((hookShot != null) && !waterActive)
         {
             waterActive = true;
+
             //activateWater();
+        }
+        
+        if (!waterActive)
+        {
+            //AudioManager.Instance.StopSound(water);
         }
     }
 
@@ -141,5 +148,7 @@ public class WaterTempleManager : GameManager, EventSystem.EventListener
 
        wave2.GetComponent<Fliparino>().enabled = true;
        wave2.GetComponent<WaterBehavior>().enabled = true;
+
+       water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
     }
 }

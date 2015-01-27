@@ -91,11 +91,12 @@
      <Compile Include="Assets\Scripts\SoundSystem\Sounds.cs" />
      <Compile Include="Assets\Scripts\SwitchTriggerScript.cs" />
      <Compile Include="Assets\Scripts\TempStuff\TempDoorToMaze.cs" />
+     <Compile Include="Assets\Scripts\Text\Count_Death.cs" />
+     <Compile Include="Assets\Scripts\Text\DisplayText.cs" />
      <Compile Include="Assets\Scripts\UI\GUIv1.cs" />
      <Compile Include="Assets\Scripts\WaterBehavior.cs" />
      <Compile Include="Assets\Scripts\WaterTempleManager.cs" />
      <Compile Include="Assets\Scripts\WaterToHallDoor.cs" />
-     <Compile Include="Assets\Scripts\test.cs" />
      <Compile Include="Assets\Scripts\wiggle.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
