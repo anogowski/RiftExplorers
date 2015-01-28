@@ -2,5 +2,5 @@
 
 public enum Sounds
 {
-    Hallelujah, WaterTempleTheme, Water, GetItem, Clang, Chain, JamieScream
+    Hallelujah, WaterTempleTheme,WaterTempleComplete, WaterTempleDeath, Water, Waves, GetItem, Clang, Chain, JamieScream, Valve, 
 }
