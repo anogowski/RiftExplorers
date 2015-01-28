@@ -15,6 +15,12 @@ public class AudioManager : Singleton<AudioManager>
         clips.Add((AudioClip)Resources.Load("Clang", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("Hookshot", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("water_temple", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("waves", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("death", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("level_complete", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("JamieScream", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("valve", typeof(AudioClip)));
+
 
     }
 
@@ -31,8 +37,17 @@ public class AudioManager : Singleton<AudioManager>
             case Sounds.WaterTempleTheme:
                 clip = clips.Find(n => n.name.Equals("water_temple"));
                 break;
+            case Sounds.WaterTempleComplete:
+                clip = clips.Find(n => n.name.Equals("level_complete"));
+                break;
+            case Sounds.WaterTempleDeath:
+                clip = clips.Find(n => n.name.Equals("death"));
+                break;
             case Sounds.Water:
                 clip = clips.Find(n => n.name.Equals("rushing_water"));
+                break;
+            case Sounds.Waves:
+                clip = clips.Find(n => n.name.Equals("waves"));
                 break;
             case Sounds.GetItem:
                 clip = clips.Find(n => n.name.Equals("Fanfare"));
@@ -44,6 +59,10 @@ public class AudioManager : Singleton<AudioManager>
                 clip = clips.Find(n => n.name.Equals("Hookshot"));
                 break;
             case Sounds.JamieScream:
+                clip = clips.Find(n => n.name.Equals("JamieScream"));
+                break;
+            case Sounds.Valve:
+                clip = clips.Find(n => n.name.Equals("valve"));
                 break;
             default:
                 break;
