@@ -22,6 +22,8 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
     private bool waterActive;
 
     private Vector3 originalPlayerPos;
+
+    public GameObject baseWave;
     // Use this for initialization
 
     void Awake()
@@ -121,6 +123,8 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         
         if(waterActive)
         {
+            activateBaseWater();
+            checkFallHeight();
             checkForDeath();
             checkForComplete();
         }
@@ -168,6 +172,23 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
     }
 
+    private void activateBaseWater()
+    {
+        GameObject wave = GameObject.FindGameObjectWithTag("Water");
+        Transform wave1 = wave.transform.FindChild("Wave");
+        Transform wave2 = wave.transform.FindChild("Water2");
+
+        if(wave1.transform.position.y > -53.25f)
+        {
+            baseWave.SetActive(true);
+        }
+    }
+
+    private void checkFallHeight()
+    {
+
+    }
+
     private void checkForDeath()
     {
         GameObject wave = GameObject.FindGameObjectWithTag("Water");
@@ -184,6 +205,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             player.transform.position = originalPlayerPos;
             wave1.transform.position = new Vector3(wave1.transform.position.x, -54.3f, wave1.transform.position.z);
             wave2.transform.position = new Vector3(wave1.transform.position.x, -100.7f, wave1.transform.position.z);
+            baseWave.SetActive(false);
             Appear.Triggered = false;
 
             eventSender.SendEvent(EventSystem.EventType.Player_Death);
