@@ -42,9 +42,6 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         waterActive = false;
 
         AudioManager.Instance.PlaySounds(Sounds.WaterTempleTheme, SoundActions.Loop, Vector3.zero);
-
-
-
     }
 
   void EventListener.React(EventSystem.EventType eventType)
@@ -52,7 +49,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         switch (eventType)
         {
             case EventSystem.EventType.Level_Start:
-                   bestTime = PlayerPrefs.GetInt("bestTime", 3600);
+                bestTime = PlayerPrefs.GetInt("bestTimeWaterTemple", 3600);
                 break;
             case EventSystem.EventType.Player_Alive:
                 break;
@@ -61,22 +58,24 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 playerGUI.setCrossHairVisable(true);
                 break;
             case EventSystem.EventType.Player_Death:
+                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero);
                 attempts++;
                 break;
             case EventSystem.EventType.Checkpoint:
                 break;
             case EventSystem.EventType.Level_Complete:
                 {
+                    AudioManager.Instance.PlaySounds(Sounds.WaterTempleComplete, SoundActions.Play, player.transform.position);
                     compeletionTime = currentTime;
                     if (compeletionTime < bestTime)
                     {
                         bestTime = compeletionTime;
-                        PlayerPrefs.SetInt("bestTime", bestTime);
+                        PlayerPrefs.SetInt("bestTimeWaterTemple", bestTime);
                     }
-                   int bestAttempts = PlayerPrefs.GetInt("bestAttempts", 100);
+                   int bestAttempts = PlayerPrefs.GetInt("bestAttemptsWaterTemple", 100);
                     if (attempts <= bestAttempts)
                     {
-                        PlayerPrefs.SetInt("bestAttempts", attempts);
+                        PlayerPrefs.SetInt("bestAttemptsWaterTemple", attempts);
                     }
                     //use to reset best values
                     //PlayerPrefs.SetInt("bestTime", 3600);

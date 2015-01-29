@@ -28,7 +28,8 @@ public class WaterBehavior : MonoBehaviour {
 				}
 				else
 				{
-                    AudioManager.Instance.StopSound(WaterTempleManager.Instance.water);           
+                    AudioManager.Instance.StopSound(WaterTempleManager.Instance.water);
+                    AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f));
 					this.transform.position = new Vector3 (0f, 39f, 0f);
 				}
 			}
