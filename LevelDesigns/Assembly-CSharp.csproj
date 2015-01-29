@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\MazeRoomScripts\CrusherTriggerScript.cs" />
      <Compile Include="Assets\Scripts\MazeRoomScripts\MazeDeathScript.cs" />
      <Compile Include="Assets\Scripts\MazeRoomScripts\SpikesTriggerScript.cs" />
+     <Compile Include="Assets\Scripts\MazeRoomScripts\WaterFountain.cs" />
      <Compile Include="Assets\Scripts\OVRControlInterface.cs" />
      <Compile Include="Assets\Scripts\OVRController.cs" />
      <Compile Include="Assets\Scripts\OVRInterface.cs" />
