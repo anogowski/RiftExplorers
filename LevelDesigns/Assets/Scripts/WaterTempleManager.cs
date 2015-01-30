@@ -59,7 +59,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 playerGUI.setCrossHairVisable(true);
                 break;
             case EventSystem.EventType.Player_Death:
-                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero,0.9f);
+                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero);
                 attempts++;
                 break;
             case EventSystem.EventType.Checkpoint:
@@ -118,6 +118,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             waterActive = true;
 
             activateWater();
+            Debug.Log("HERE AGAIN");
             water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
         }
         

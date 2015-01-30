@@ -4,6 +4,7 @@ using System.Collections;
 public class WaterBehavior : MonoBehaviour {
 
 	public static float waterHeight = -1f;
+    private bool isFilled = false;
 	// Use this for initialization
 	void Start () {
 		if(this.gameObject.name.Equals("Wave"))
@@ -27,9 +28,13 @@ public class WaterBehavior : MonoBehaviour {
 					this.transform.position += new Vector3(0.0f, 0.1f,0f);
 				}
 				else
-				{
-                    AudioManager.Instance.StopSound(WaterTempleManager.Instance.water);
-                    AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f));
+				{                               
+                    if (!isFilled)
+                    {
+                        isFilled = true;
+                        AudioManager.Instance.StopSound(WaterTempleManager.Instance.water);
+                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f));
+                    }
 					this.transform.position = new Vector3 (0f, 39f, 0f);
 				}
 			}
