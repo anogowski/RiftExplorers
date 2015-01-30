@@ -7,7 +7,7 @@ public class CompletedLevelScript : MonoBehaviour {
     {
         if(col.gameObject.name.Equals("OVRPlayer") && !completed)
         {
-            //AudioManager.Instance.Play(Sounds.GetItem, SoundActions.Play, this.transform.position);
+            AudioManager.Instance.PlaySounds(Sounds.WaterTempleComplete, SoundActions.Play, this.transform.position);
             Debug.Log("Complete");
             completed = true;
         }

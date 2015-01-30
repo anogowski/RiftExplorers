@@ -41,8 +41,6 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         playerControl = player.GetComponent<OVRInterface>();
         playerGUI = GameObject.FindGameObjectWithTag("UI").GetComponent<GUIv1>();
         waterActive = false;
-
-        AudioManager.Instance.PlaySounds(Sounds.WaterTempleTheme, SoundActions.Loop, Vector3.zero);
     }
 
   void EventListener.React(EventSystem.EventType eventType)
@@ -50,6 +48,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         switch (eventType)
         {
             case EventSystem.EventType.Level_Start:
+                AudioManager.Instance.PlaySounds(Sounds.WaterTempleTheme, SoundActions.Loop, Vector3.zero, 0.1f);
                 bestTime = PlayerPrefs.GetInt("bestTimeWaterTemple", 3600);
                 break;
             case EventSystem.EventType.Player_Alive:
@@ -64,11 +63,14 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 break;
             case EventSystem.EventType.Checkpoint:
                 break;
+            case EventSystem.EventType.Turn_Valve:
+                AudioManager.Instance.PlaySounds(Sounds.Valve, SoundActions.Play, player.transform.position);
+                break;
             case EventSystem.EventType.Valve_On:
                 break;
             case EventSystem.EventType.Valve_Off:
                         AudioManager.Instance.StopSound(water);
-                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f));
+                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f), 0.9f);
                 break;
             case EventSystem.EventType.Level_Complete:
                 {
@@ -114,7 +116,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             Vector3 forward = playerControl.getForward();
             Vector3 position = playerControl.getPosition();
             //Debug.Log("Interaction called");
-            interacte(forward, position);
+            interact(forward, position);
         }
 
         Transform hookShot = GameObject.FindGameObjectWithTag("Left_Hand").transform.FindChild("HookShot");
@@ -137,7 +139,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         }
     }
 
-    private void interacte(Vector3 forward, Vector3 position)
+    private void interact(Vector3 forward, Vector3 position)
     {
         forward = forward * distanceOut;
         Ray ray = new Ray(position, forward);
