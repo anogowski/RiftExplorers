@@ -23,6 +23,12 @@ public class ActionInput : Singleton<ActionInput>
         trackingActions[ActionsToTrack.escape]   = Input.GetKey(KeyCode.Escape) || OVRGamepadController.GPC_GetButton(OVRGamepadController.Button.Start);
     }
 
+    public void getLookAtRotation()
+    {
+        
+        
+    }
+
 	// Use this for initialization
 	void Start () {
         trackingActions = new Dictionary<ActionsToTrack, bool>();

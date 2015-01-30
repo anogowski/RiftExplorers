@@ -11,6 +11,7 @@ public class OVRInterface : MonoBehaviour
 {
 
     public float rotationRachet;
+    public float speed;
 
     public GUIv1 guiInterface;
 
@@ -18,6 +19,7 @@ public class OVRInterface : MonoBehaviour
     GameObject Left_Hand;
     GameObject Right_Hand;
     GameObject CenterEye;
+    GameObject editorCam;
     OVRPlayerController OVRContr;
 
     // Use this for initialization
@@ -28,6 +30,23 @@ public class OVRInterface : MonoBehaviour
        Left_Hand = GameObject.FindGameObjectWithTag("Left_Hand");
        Right_Hand = GameObject.FindGameObjectWithTag("Right_Hand");
        CenterEye = GameObject.FindGameObjectWithTag("CenterEye");
+       editorCam = GameObject.FindGameObjectWithTag("EditorCam");
+
+        #if UNITY_EDITOR
+                EditorTesting(true);
+        #else
+                EditorTesting(false);
+        #endif
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        keyboardInput();
+        movement();
+        #if UNITY_EDITOR
+            applyMouseRotation();
+        #endif
     }
 
     public void pickUP(Hand hand, GameObject obj)
@@ -46,11 +65,29 @@ public class OVRInterface : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void applyMouseRotation()
     {
-        keyboardInput();
-        movement();
+        float axisX = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
+        float axisY = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightYAxis);
+        
+        cameraRig.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * speed);
+        this.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * (2 * speed));
+    }
+
+    private void EditorTesting(bool inEditor)
+    {
+        if (inEditor)
+        {
+            editorCam.SetActive(true);
+            cameraRig.leftEyeAnchor.gameObject.SetActive(false);
+            cameraRig.rightEyeAnchor.gameObject.SetActive(false);
+            Debug.Log("Playing in Editor");
+        }
+        else
+        {
+            editorCam.SetActive(false);
+            Debug.Log("Playing in Game");
+        }
     }
 
     private void keyboardInput()
