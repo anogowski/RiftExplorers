@@ -64,9 +64,15 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 break;
             case EventSystem.EventType.Checkpoint:
                 break;
+            case EventSystem.EventType.Valve_On:
+                break;
+            case EventSystem.EventType.Valve_Off:
+                        AudioManager.Instance.StopSound(water);
+                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f));
+                break;
             case EventSystem.EventType.Level_Complete:
                 {
-                    AudioManager.Instance.PlaySounds(Sounds.WaterTempleComplete, SoundActions.Play, player.transform.position);
+              //      AudioManager.Instance.PlaySounds(Sounds.WaterTempleComplete, SoundActions.Play, player.transform.position);
                     compeletionTime = currentTime;
                     if (compeletionTime < bestTime)
                     {
@@ -79,8 +85,8 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                         PlayerPrefs.SetInt("bestAttemptsWaterTemple", attempts);
                     }
                     //use to reset best values
-                    //PlayerPrefs.SetInt("bestTime", 3600);
-                    //PlayerPrefs.SetInt("bestAttempts", 100);
+                    //PlayerPrefs.SetInt("bestTimeWaterTemple", 3600);
+                    //PlayerPrefs.SetInt("bestAttemptsWaterTemple", 100);
                     PlayerPrefs.Save();
                     string[] lines = { "PlayerData", "Best Time: " + PlayerPrefs.GetInt("bestTime", 3600) + "", "Best Attempts: ", PlayerPrefs.GetInt("bestAttempts", 100) + "" };
                     System.IO.File.WriteAllLines(Application.persistentDataPath + "\\SaveFile.txt", lines);

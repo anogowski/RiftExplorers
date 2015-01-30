@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using EventSystem;
 
 public class WaterBehavior : MonoBehaviour {
 
 	public static float waterHeight = -1f;
     private bool isFilled = false;
+    EventSender eventSender = new EventSender();
+
 	// Use this for initialization
 	void Start () {
 		if(this.gameObject.name.Equals("Wave"))
 		{
 			waterHeight = this.transform.position.y;
 		}
+        eventSender.Subscribe(WaterTempleManager.Instance);
 	}
 	
 	// Update is called once per frame
@@ -32,8 +36,7 @@ public class WaterBehavior : MonoBehaviour {
                     if (!isFilled)
                     {
                         isFilled = true;
-                        AudioManager.Instance.StopSound(WaterTempleManager.Instance.water);
-                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f));
+                        eventSender.SendEvent(EventSystem.EventType.Valve_Off);
                     }
 					this.transform.position = new Vector3 (0f, 39f, 0f);
 				}
