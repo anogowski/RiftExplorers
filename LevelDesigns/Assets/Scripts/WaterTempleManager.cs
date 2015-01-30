@@ -32,6 +32,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         eventSender.Subscribe(counter);
         eventSender.SendEvent(EventSystem.EventType.Level_Start);
         eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+        Screen.lockCursor = true;
     }
     void Start()
     {
@@ -58,7 +59,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 playerGUI.setCrossHairVisable(true);
                 break;
             case EventSystem.EventType.Player_Death:
-                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero);
+                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero,0.9f);
                 attempts++;
                 break;
             case EventSystem.EventType.Checkpoint:

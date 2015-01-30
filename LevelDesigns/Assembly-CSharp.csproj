@@ -98,12 +98,10 @@
      <Compile Include="Assets\Scripts\Text\DisplayText.cs" />
      <Compile Include="Assets\Scripts\Text\HookshotInstuctions.cs" />
      <Compile Include="Assets\Scripts\Text\InstructionsTitle.cs" />
-     <Compile Include="Assets\Scripts\UI\FadingManager.cs" />
      <Compile Include="Assets\Scripts\UI\GUIv1.cs" />
      <Compile Include="Assets\Scripts\WaterBehavior.cs" />
      <Compile Include="Assets\Scripts\WaterTempleManager.cs" />
      <Compile Include="Assets\Scripts\WaterToHallDoor.cs" />
-     <Compile Include="Assets\Scripts\WaterTrapScripts\FallingPlatform.cs" />
      <Compile Include="Assets\Scripts\wiggle.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
