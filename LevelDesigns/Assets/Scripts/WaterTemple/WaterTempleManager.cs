@@ -68,18 +68,18 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 {
                     Appear.Triggered = true;
                 }
-                AudioManager.Instance.PlaySounds(Sounds.Valve, SoundActions.Play, player.transform.position);
+                AudioManager.Instance.PlaySounds(Sounds.Valve, SoundActions.Play, player.transform.position, 0.1f);
                 break;
             case EventSystem.EventType.Valve_Open:
                 Appear.Triggered = false;
                 break;
             case EventSystem.EventType.Valve_Closed:
                         AudioManager.Instance.StopSound(water);
-                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f), 0.9f);
+                        AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f), 0.5f);
                 break;
             case EventSystem.EventType.Level_Complete:
                 {
-              //      AudioManager.Instance.PlaySounds(Sounds.WaterTempleComplete, SoundActions.Play, player.transform.position);
+                    //AudioManager.Instance.PlaySounds(Sounds.WaterTempleComplete, SoundActions.Play, player.transform.position);
                     compeletionTime = currentTime;
                     if (compeletionTime < bestTime)
                     {

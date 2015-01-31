@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using EventSystem;
 public class HookShot : MonoBehaviour, IInteractable
 {
     AudioSource chainSound;
@@ -18,10 +18,12 @@ public class HookShot : MonoBehaviour, IInteractable
 
     private OVRInterface user;
 
+    EventSender eventSender = new EventSender();
+
 	// Use this for initialization
 	void Start ()
     {
-	   
+        eventSender.Subscribe(WaterTempleManager.Instance);
 	}
 	
 	// Update is called once per frame
@@ -100,8 +102,7 @@ public class HookShot : MonoBehaviour, IInteractable
             disableColition();
             this.user = (OVRInterface) GameObject.FindGameObjectWithTag("Player").GetComponent<OVRInterface>();
             this.user.pickUP(Hand.Left, this.gameObject);
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position);
+            eventSender.SendEvent(EventSystem.EventType.Get_Item);
 
         }
 
@@ -109,7 +110,7 @@ public class HookShot : MonoBehaviour, IInteractable
 
     private void PlayChainSound()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+       GameObject player = GameObject.FindGameObjectWithTag("Player");
        chainSound =  AudioManager.Instance.PlaySounds(Sounds.Chain, SoundActions.Loop, player.transform.position);
     }
 
