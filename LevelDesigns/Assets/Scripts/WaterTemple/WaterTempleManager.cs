@@ -54,7 +54,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             case EventSystem.EventType.Player_Alive:
                 break;
             case EventSystem.EventType.Get_Item:
-                AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position);
+                AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position, 0.25f);
                 playerGUI.setCrossHairVisable(true);
                 break;
             case EventSystem.EventType.Player_Death:
@@ -64,11 +64,11 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             case EventSystem.EventType.Checkpoint:
                 break;
             case EventSystem.EventType.Turn_Valve:
-                if (Appear.Triggered == false)
+                if (!Appear.Triggered)
                 {
                     Appear.Triggered = true;
+                    AudioManager.Instance.PlaySounds(Sounds.Valve, SoundActions.Play, player.transform.position, 0.25f);
                 }
-                AudioManager.Instance.PlaySounds(Sounds.Valve, SoundActions.Play, player.transform.position, 0.1f);
                 break;
             case EventSystem.EventType.Valve_Open:
                 Appear.Triggered = false;
