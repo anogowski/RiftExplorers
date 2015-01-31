@@ -64,11 +64,16 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             case EventSystem.EventType.Checkpoint:
                 break;
             case EventSystem.EventType.Turn_Valve:
+                if (Appear.Triggered == false)
+                {
+                    Appear.Triggered = true;
+                }
                 AudioManager.Instance.PlaySounds(Sounds.Valve, SoundActions.Play, player.transform.position);
                 break;
-            case EventSystem.EventType.Valve_On:
+            case EventSystem.EventType.Valve_Open:
+                Appear.Triggered = false;
                 break;
-            case EventSystem.EventType.Valve_Off:
+            case EventSystem.EventType.Valve_Closed:
                         AudioManager.Instance.StopSound(water);
                         AudioManager.Instance.PlaySounds(Sounds.Waves, SoundActions.Loop, new Vector3(0f, 10f, 0f), 0.9f);
                 break;
@@ -155,7 +160,6 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 {
                     IInteractable interactable = (IInteractable)m;
                     interactable.interact(player);
-                    eventSender.SendEvent(EventSystem.EventType.Get_Item);
                     //Debug.Log("Found interactable Object");
                 }
             }

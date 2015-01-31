@@ -36,7 +36,7 @@ public class WaterBehavior : MonoBehaviour {
                     if (!isFilled)
                     {
                         isFilled = true;
-                        eventSender.SendEvent(EventSystem.EventType.Valve_Off);
+                        eventSender.SendEvent(EventSystem.EventType.Valve_Closed);
                     }
 					this.transform.position = new Vector3 (0f, 39f, 0f);
 				}
