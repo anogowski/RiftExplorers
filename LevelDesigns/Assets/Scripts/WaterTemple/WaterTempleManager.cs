@@ -56,6 +56,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             case EventSystem.EventType.Get_Item:
                 AudioManager.Instance.PlaySounds(Sounds.GetItem, SoundActions.Play, player.transform.position, 0.25f);
                 playerGUI.setCrossHairVisable(true);
+                WaterFountain.Triggered = true;
                 break;
             case EventSystem.EventType.Player_Death:
                 AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero);

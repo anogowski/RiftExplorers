@@ -101,7 +101,6 @@
      <Compile Include="Assets\Scripts\WaterTemple\WaterTempleManager.cs" />
      <Compile Include="Assets\Scripts\WaterTemple\WaterValve.cs" />
      <Compile Include="Assets\Scripts\WaterTemple\wiggle.cs" />
-     <Compile Include="Assets\Scripts\WaterTrapScripts\FallingPlatform.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />

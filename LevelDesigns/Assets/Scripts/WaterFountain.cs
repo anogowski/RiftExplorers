@@ -3,13 +3,23 @@ using System.Collections;
 
 public class WaterFountain : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+  public  ParticleSystem p;
+    public static bool Triggered = false;
+    void Start()
+    {
+        p.Stop();
+    }
+	private void Play () 
+    {
+        p.playbackSpeed = 1;
+        p.Play();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void Update()
+    {
+        if (Triggered)
+        {
+            Play();
+        }
+    }
 }
