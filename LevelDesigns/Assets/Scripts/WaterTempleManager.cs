@@ -196,14 +196,12 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
     private void checkFallHeight(bool val)
     {
-        Debug.Log("fall: " + val);
-
         if (val)
         {
+            //die();
             GameObject wave = GameObject.FindGameObjectWithTag("Water");
             Transform wave1 = wave.transform.FindChild("Wave");
             Transform wave2 = wave.transform.FindChild("Water2");
-
             player.transform.position = originalPlayerPos;
 
             if (baseWave.activeInHierarchy)
@@ -214,10 +212,9 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             }
             Appear.Triggered = false;
 
-            eventSender.SendEvent(EventSystem.EventType.Player_Death);
-            //Debug.Log("Counter: " + attempts);
+            //Debug.Log("Counter: " + attempts);          
 
-            //have fade out here
+            //live();
             eventSender.SendEvent(EventSystem.EventType.Player_Alive);
         }
     }
@@ -235,6 +232,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         else if (player.transform.position.y + 0.545f <= wave1.transform.position.y)
         {
             Debug.Log("You're dead");
+            //die();
             player.transform.position = originalPlayerPos;
             wave1.transform.position = new Vector3(wave1.transform.position.x, -54.3f, wave1.transform.position.z);
             wave2.transform.position = new Vector3(wave1.transform.position.x, -100.7f, wave1.transform.position.z);
@@ -255,5 +253,18 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         {
             eventSender.SendEvent(EventSystem.EventType.Level_Complete);
         }
+    }
+
+    private void die()
+    {
+        FadingManager.fadingOut = true;
+        eventSender.SendEvent(EventSystem.EventType.Player_Death);
+        StartCoroutine(wait(5f));
+    }
+
+    private IEnumerator wait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("Waiting");
     }
 }

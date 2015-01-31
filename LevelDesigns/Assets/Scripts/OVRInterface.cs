@@ -75,7 +75,6 @@ public class OVRInterface : MonoBehaviour
             else
             {
                 yPos = this.transform.position.y;
-                Debug.Log("ypos: " + yPos);
             }
         }
         return false;
