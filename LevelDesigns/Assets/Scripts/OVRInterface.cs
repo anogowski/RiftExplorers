@@ -22,15 +22,18 @@ public class OVRInterface : MonoBehaviour
     GameObject editorCam;
     OVRPlayerController OVRContr;
 
+    private float yPos;
+
     // Use this for initialization
     void Start()
     {
-       cameraRig = GameObject.FindObjectOfType(typeof(OVRCameraRig)) as OVRCameraRig;
-       OVRContr  = this.transform.gameObject.GetComponent<OVRPlayerController>();
-       Left_Hand = GameObject.FindGameObjectWithTag("Left_Hand");
-       Right_Hand = GameObject.FindGameObjectWithTag("Right_Hand");
-       CenterEye = GameObject.FindGameObjectWithTag("CenterEye");
-       editorCam = GameObject.FindGameObjectWithTag("EditorCam");
+        cameraRig = GameObject.FindObjectOfType(typeof(OVRCameraRig)) as OVRCameraRig;
+        OVRContr  = this.transform.gameObject.GetComponent<OVRPlayerController>();
+        Left_Hand = GameObject.FindGameObjectWithTag("Left_Hand");
+        Right_Hand = GameObject.FindGameObjectWithTag("Right_Hand");
+        CenterEye = GameObject.FindGameObjectWithTag("CenterEye");
+        editorCam = GameObject.FindGameObjectWithTag("EditorCam");
+        yPos = this.transform.position.y;
 
         #if UNITY_EDITOR
                 EditorTesting(true);
@@ -47,6 +50,35 @@ public class OVRInterface : MonoBehaviour
         #if UNITY_EDITOR
             applyMouseRotation();
         #endif
+    }
+
+    public bool getFallDeath()
+    {
+        bool fallDeath = false;
+        if (isFalling())
+        {
+            Debug.Log("I have fallen and I can't get up.");
+            fallDeath = true;
+        }
+        return fallDeath;
+    }
+
+    public bool isFalling()
+    {
+        if (OVRContr.isGrounded())
+        {
+            float length = Mathf.Abs(yPos - this.transform.position.y);
+            if (length > 30f && (yPos > this.transform.position.y))
+            {
+                return true;
+            }
+            else
+            {
+                yPos = this.transform.position.y;
+                Debug.Log("ypos: " + yPos);
+            }
+        }
+        return false;
     }
 
     public void pickUP(Hand hand, GameObject obj)

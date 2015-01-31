@@ -97,7 +97,6 @@ public class OVRPlayerController : MonoBehaviour
 	void Awake()
 	{
 		Controller = gameObject.GetComponent<CharacterController>();
-
 		if(Controller == null)
 			Debug.LogWarning("OVRPlayerController: No CharacterController attached.");
 
@@ -124,7 +123,7 @@ public class OVRPlayerController : MonoBehaviour
 	}
 
 	protected virtual void Update()
-	{
+	{        
 		if (useProfileHeight)
 		{
 			var p = CameraController.transform.localPosition;
@@ -400,5 +399,10 @@ public class OVRPlayerController : MonoBehaviour
 	{
 		YRotation = 0.0f;
 	}
+
+    public bool isGrounded()
+    {
+        return Controller.isGrounded;
+    }
 }
 

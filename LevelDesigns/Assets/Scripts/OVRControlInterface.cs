@@ -9,7 +9,7 @@ public class OVRControlInterface : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -36,7 +36,6 @@ public class OVRControlInterface : MonoBehaviour {
             OVRContr.YRotation -= rotationRachet;
            // Debug.Log("rotateL");
         }
-
 	}
 
     private void movement()

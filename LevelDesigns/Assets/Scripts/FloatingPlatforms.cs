@@ -16,6 +16,7 @@ public class FloatingPlatforms : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+        height = this.transform.position.y;
         if(!Appear.Triggered)
         {
             this.transform.position = new Vector3(this.transform.position.x, 20.3f, this.transform.position.z);

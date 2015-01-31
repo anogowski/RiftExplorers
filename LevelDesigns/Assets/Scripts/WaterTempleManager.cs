@@ -126,14 +126,15 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             waterActive = true;
 
             activateWater();
-            Debug.Log("HERE AGAIN");
             water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
         }
-        
+
+        bool val = playerControl.getFallDeath();
+        checkFallHeight(val);
+
         if(waterActive)
         {
-            activateBaseWater();
-            checkFallHeight();
+            activateBaseWater();          
             checkForDeath();
             checkForComplete();
         }
@@ -193,9 +194,32 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         }
     }
 
-    private void checkFallHeight()
+    private void checkFallHeight(bool val)
     {
+        Debug.Log("fall: " + val);
 
+        if (val)
+        {
+            GameObject wave = GameObject.FindGameObjectWithTag("Water");
+            Transform wave1 = wave.transform.FindChild("Wave");
+            Transform wave2 = wave.transform.FindChild("Water2");
+
+            player.transform.position = originalPlayerPos;
+
+            if (baseWave.activeInHierarchy)
+            {
+                wave1.transform.position = new Vector3(wave1.transform.position.x, -54.3f, wave1.transform.position.z);
+                wave2.transform.position = new Vector3(wave1.transform.position.x, -100.7f, wave1.transform.position.z);
+                baseWave.SetActive(false); 
+            }
+            Appear.Triggered = false;
+
+            eventSender.SendEvent(EventSystem.EventType.Player_Death);
+            //Debug.Log("Counter: " + attempts);
+
+            //have fade out here
+            eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+        }
     }
 
     private void checkForDeath()
@@ -204,11 +228,11 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         Transform wave1 = wave.transform.FindChild("Wave");
         Transform wave2 = wave.transform.FindChild("Water2");
 
-        if(player.transform.position.y > wave1.transform.position.y)
+        if (player.transform.position.y > wave1.transform.position.y)
         {
             Debug.Log("Not dead yet");
         }
-        else if(player.transform.position.y+0.545f <= wave1.transform.position.y)
+        else if (player.transform.position.y + 0.545f <= wave1.transform.position.y)
         {
             Debug.Log("You're dead");
             player.transform.position = originalPlayerPos;
