@@ -112,10 +112,14 @@ public class OVRInterface : MonoBehaviour
         yAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
         /**/
 
-
-        /**/
+        /**
         cameraRig.transform.Rotate(MouseLook.Instance.classicGetRotation() * speed);
         this.transform.Rotate(MouseLook.Instance.classicGetRotationX() * Time.deltaTime * (2 * speed));
+        /**/
+
+        /**/
+        cameraRig.transform.Rotate(new Vector3(0, -yAxis, 0) * Time.deltaTime * speed);
+        this.transform.Rotate(new Vector3(xAxis, 0, 0) * Time.deltaTime * (2 * speed));
         /**/
 
         /**
