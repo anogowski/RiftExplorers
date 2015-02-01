@@ -34,6 +34,7 @@ public class OVRInterface : MonoBehaviour
         CenterEye = GameObject.FindGameObjectWithTag("CenterEye");
         editorCam = GameObject.FindGameObjectWithTag("EditorCam");
         yPos = this.transform.position.y;
+        MouseLook.Instance.setRotation(this.transform.localRotation);
 
         #if UNITY_EDITOR
                 EditorTesting(true);
@@ -98,11 +99,30 @@ public class OVRInterface : MonoBehaviour
 
     private void applyMouseRotation()
     {
-        float axisX = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
-        float axisY = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightYAxis);
-        
-        cameraRig.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * speed);
-        this.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * (2 * speed));
+        float xAxis = 0.0f;
+        float yAxis = 0.0f;
+
+        /**/
+        xAxis = Input.GetAxis("Mouse X");
+        yAxis = Input.GetAxis("Mouse Y");
+        /**/
+
+        /**
+        xAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
+        yAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
+        /**/
+
+
+        /**/
+        cameraRig.transform.Rotate(MouseLook.Instance.classicGetRotation() * speed);
+        this.transform.Rotate(MouseLook.Instance.classicGetRotationX() * Time.deltaTime * (2 * speed));
+        /**/
+
+        /**
+        cameraRig.transform.localRotation = (MouseLook.Instance.getRotation());
+        this.transform.localRotation = (MouseLook.Instance.getRotationY());
+        /**/
+
     }
 
     private void EditorTesting(bool inEditor)
