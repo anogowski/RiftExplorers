@@ -118,8 +118,8 @@ public class OVRInterface : MonoBehaviour
         /**/
 
         /**/
-        cameraRig.transform.Rotate(new Vector3(0, -yAxis, 0) * Time.deltaTime * speed);
-        this.transform.Rotate(new Vector3(xAxis, 0, 0) * Time.deltaTime * (2 * speed));
+        cameraRig.transform.Rotate(new Vector3(-yAxis, 0, 0) * Time.deltaTime * speed);
+        this.transform.Rotate(new Vector3(0, xAxis, 0) * Time.deltaTime * (2 * speed));
         /**/
 
         /**
