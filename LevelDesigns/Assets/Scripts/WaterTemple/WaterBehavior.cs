@@ -7,13 +7,15 @@ public class WaterBehavior : MonoBehaviour {
 	public static float waterHeight = -1f;
     private bool isFilled = false;
     EventSender eventSender = new EventSender();
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		if(this.gameObject.name.Equals("Wave"))
 		{
-			waterHeight = this.transform.position.y;
+			waterHeight = this.transform.position.y;         
 		}
+        player = GameObject.Find("OVRPlayer");
         eventSender.Subscribe(WaterTempleManager.Instance);
 	}
 	
@@ -21,13 +23,41 @@ public class WaterBehavior : MonoBehaviour {
 	void Update () {
 		if(!Appear.Triggered)
 		{
-			this.transform.position += new Vector3 (0f, 0.005f, 0f);
+            //platforms
+            if (player.transform.position.y < -40f)
+            {
+                this.transform.position += new Vector3(0f, 0.005f, 0f);
+            }
+            else
+            {
+                this.transform.position += new Vector3(0f, 0.01f, 0f);
+            }
+            
+
+            //while hookshotting
+            if(player.transform.position.y > -40f && player.transform.position.y < 1.5f)
+            {
+                this.transform.position += new Vector3(0f, 0.21f, 0f);
+            }
+            if (player.transform.position.y > 16f && player.transform.position.y < 43f)
+            {
+                this.transform.position += new Vector3(0f, 0.15f, 0f);
+            }
+            if (player.transform.position.y > 68f && player.transform.position.y < 81f)
+            {
+                this.transform.position += new Vector3(0f, 0.15f, 0f);
+            }
+            if (player.transform.position.y > 97.5f && player.transform.position.y < 130f)
+            {
+                this.transform.position += new Vector3(0f, 0.2f, 0f);
+            }
+
 		}
 		if(Appear.Triggered)
 		{
 			if(this.gameObject.name.Equals("Wave"))
 			{
-				if (this.transform.position.y < 39f)
+				if (this.transform.position.y < 137f)
 				{
 					this.transform.position += new Vector3(0.0f, 0.1f,0f);
 				}
@@ -38,18 +68,18 @@ public class WaterBehavior : MonoBehaviour {
                         isFilled = true;
                         eventSender.SendEvent(EventSystem.EventType.Valve_Closed);
                     }
-					this.transform.position = new Vector3 (0f, 39f, 0f);
+					this.transform.position = new Vector3 (0f, 137f, 0f);
 				}
 			}
 			else 
 			{
-				if (this.transform.position.y < -7f)
+				if (this.transform.position.y < 42f)
 				{
 					this.transform.position += new Vector3(0.0f, 0.1f,0f);
 				}
 				else
 				{
-					this.transform.position = new Vector3 (0f, -7f, 0f);
+					this.transform.position = new Vector3 (0f, 42f, 0f);
 				}
 			}
 		}

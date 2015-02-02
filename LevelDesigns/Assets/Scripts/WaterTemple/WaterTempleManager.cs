@@ -24,6 +24,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
     private Vector3 originalPlayerPos;
 
     public GameObject baseWave;
+    private bool startedCoroutine;
     // Use this for initialization
 
     void Awake()
@@ -41,6 +42,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         playerControl = player.GetComponent<OVRInterface>();
         playerGUI = GameObject.FindGameObjectWithTag("UI").GetComponent<GUIv1>();
         waterActive = false;
+        startedCoroutine = false;
     }
 
   void EventListener.React(EventSystem.EventType eventType)
@@ -114,6 +116,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Player height: " + player.transform.position.y);
        counter.Update();
        currentTime = counter.currentTime;
         //Debug.Log(counter.currentTime);
@@ -201,26 +204,9 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
     private void checkFallHeight(bool val)
     {
-        if (val)
+        if (val && !startedCoroutine)
         {
-            //die();
-            GameObject wave = GameObject.FindGameObjectWithTag("Water");
-            Transform wave1 = wave.transform.FindChild("Wave");
-            Transform wave2 = wave.transform.FindChild("Water2");
-            player.transform.position = originalPlayerPos;
-
-            if (baseWave.activeInHierarchy)
-            {
-                wave1.transform.position = new Vector3(wave1.transform.position.x, -54.3f, wave1.transform.position.z);
-                wave2.transform.position = new Vector3(wave1.transform.position.x, -100.7f, wave1.transform.position.z);
-                baseWave.SetActive(false); 
-            }
-            Appear.Triggered = false;
-
-            //Debug.Log("Counter: " + attempts);          
-
-            //live();
-            eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+            StartCoroutine(myMethod());
         }
     }
 
@@ -230,25 +216,21 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         Transform wave1 = wave.transform.FindChild("Wave");
         Transform wave2 = wave.transform.FindChild("Water2");
 
-        if (player.transform.position.y > wave1.transform.position.y)
+        if (player.transform.position.y + 0.545f <= wave1.transform.position.y && !startedCoroutine)
         {
-            Debug.Log("Not dead yet");
-        }
-        else if (player.transform.position.y + 0.545f <= wave1.transform.position.y)
-        {
-            Debug.Log("You're dead");
+            StartCoroutine(myMethod());
+            
             //die();
-            player.transform.position = originalPlayerPos;
-            wave1.transform.position = new Vector3(wave1.transform.position.x, -54.3f, wave1.transform.position.z);
-            wave2.transform.position = new Vector3(wave1.transform.position.x, -100.7f, wave1.transform.position.z);
-            baseWave.SetActive(false);
-            Appear.Triggered = false;
+            //player.transform.position = originalPlayerPos;
+            //wave1.transform.position = new Vector3(wave1.transform.position.x, -55.22f, wave1.transform.position.z);
+            //wave2.transform.position = new Vector3(wave2.transform.position.x, -150.5f, wave2.transform.position.z);
+            //baseWave.SetActive(false);
+            //Appear.Triggered = false;
 
-            eventSender.SendEvent(EventSystem.EventType.Player_Death);
-            //Debug.Log("Counter: " + attempts);
-
-            //have fade out here
-            eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+            
+            ////Debug.Log("Counter: " + attempts);
+            ////have fade out here
+            //eventSender.SendEvent(EventSystem.EventType.Player_Alive);
         }
     }
 
@@ -260,16 +242,33 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         }
     }
 
-    private void die()
+    IEnumerator myMethod()
     {
+        Debug.Log("You're dead");
+        startedCoroutine = true;
         FadingManager.fadingOut = true;
         eventSender.SendEvent(EventSystem.EventType.Player_Death);
-        StartCoroutine(wait(5f));
-    }
+        yield return new WaitForSeconds(2.5f);
 
-    private IEnumerator wait(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        Debug.Log("Waiting");
+        Debug.Log("I waited");
+        GameObject wave = GameObject.FindGameObjectWithTag("Water");
+        Transform wave1 = wave.transform.FindChild("Wave");
+        Transform wave2 = wave.transform.FindChild("Water2");
+        player.transform.position = originalPlayerPos;
+        Debug.Log("Player pos: " + player.transform.position);
+        Debug.Log("Origin pos: " + originalPlayerPos);
+        if (baseWave.activeInHierarchy)
+        {
+            wave1.transform.position = new Vector3(wave1.transform.position.x, -55.2f, wave1.transform.position.z);
+            wave2.transform.position = new Vector3(wave2.transform.position.x, -150.5f, wave2.transform.position.z);
+            baseWave.SetActive(false);
+        }
+        Appear.Triggered = false;
+
+        //Debug.Log("Counter: " + attempts);          
+
+        //live();
+        eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+        startedCoroutine = false;
     }
 }

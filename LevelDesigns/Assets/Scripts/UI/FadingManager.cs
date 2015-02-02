@@ -45,6 +45,10 @@ public class FadingManager : MonoBehaviour {
     public void FadeInScene()
     {
         FadeToClear();
+        if (planePrefab.renderer.material.color.a < .25f)
+        {
+            player.GetComponent<OVRPlayerController>().enabled = true;
+        }
         if(planePrefab.renderer.material.color.a < 0.06f)
         {
             Color c = planePrefab.renderer.material.color;
@@ -53,7 +57,6 @@ public class FadingManager : MonoBehaviour {
         if(planePrefab.renderer.material.color.a <= 0.05f)
         {
             Debug.Log("GO");
-            player.GetComponent<OVRPlayerController>().enabled = true;
             planePrefab.renderer.material.color = Color.clear;
             fadingIn = false;
             planePrefab.SetActive(false);

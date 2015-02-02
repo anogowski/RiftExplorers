@@ -60,12 +60,17 @@ public class OVRInterface : MonoBehaviour
         {
             Debug.Log("I have fallen and I can't get up.");
             fallDeath = true;
+            yPos = this.transform.position.y;
         }
         return fallDeath;
     }
 
     public bool isFalling()
     {
+        if(FadingManager.fadingOut)
+        {
+            yPos = -52.2f;
+        }
         if (OVRContr.isGrounded())
         {
             float length = Mathf.Abs(yPos - this.transform.position.y);
