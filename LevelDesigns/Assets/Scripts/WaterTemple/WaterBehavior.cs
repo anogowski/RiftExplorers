@@ -59,7 +59,7 @@ public class WaterBehavior : MonoBehaviour {
 			{
 				if (this.transform.position.y < 137f)
 				{
-					this.transform.position += new Vector3(0.0f, 0.1f,0f);
+					this.transform.position += new Vector3(0.0f, 0.25f,0f);
 				}
 				else
 				{                               
@@ -75,7 +75,7 @@ public class WaterBehavior : MonoBehaviour {
 			{
 				if (this.transform.position.y < 42f)
 				{
-					this.transform.position += new Vector3(0.0f, 0.1f,0f);
+					this.transform.position += new Vector3(0.0f, 0.25f,0f);
 				}
 				else
 				{
