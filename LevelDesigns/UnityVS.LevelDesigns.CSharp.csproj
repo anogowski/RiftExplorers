@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\WaterTemple\WaterTempleManager.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\WaterValve.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\wiggle.cs" />
+    <Compile Include="Assets\Scripts\WaterTrapScripts\FallingPlatform.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />

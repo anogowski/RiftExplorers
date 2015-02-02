@@ -61,7 +61,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 WaterFountain.Triggered = true;
                 break;
             case EventSystem.EventType.Player_Death:
-                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero);
+                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero, .9f);
                 attempts++;
                 break;
             case EventSystem.EventType.Checkpoint:
