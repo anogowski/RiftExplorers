@@ -75,8 +75,8 @@ public class MouseLook : Singleton<MouseLook>
 
     private void printValues()
     {
-        Debug.Log("xRotation: " + xRotation);
-        Debug.Log("yRotation: " + yRotation);
+        //Debug.Log("xRotation: " + xRotation);
+        //Debug.Log("yRotation: " + yRotation);
         //Debug.Log("xQuaternion: " + xQuaternion);
         //Debug.Log("yQuaternion: " + yQuaternion);
         //Debug.Log("originalQuaternion: " + originalQuaternion);

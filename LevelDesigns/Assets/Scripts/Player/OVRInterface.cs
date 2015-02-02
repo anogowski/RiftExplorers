@@ -36,11 +36,12 @@ public class OVRInterface : MonoBehaviour
         yPos = this.transform.position.y;
         MouseLook.Instance.setRotation(this.transform.localRotation);
 
-        #if UNITY_EDITOR
-                EditorTesting(true);
-        #else
-                EditorTesting(false);
-        #endif
+        //EditorTesting(false);
+        //#if UNITY_EDITOR
+        //        //EditorTesting(true);
+        //#else
+        //        EditorTesting(false);
+        //#endif
     }
 
     // Update is called once per frame
@@ -48,9 +49,9 @@ public class OVRInterface : MonoBehaviour
     {
         keyboardInput();
         movement();
-        #if UNITY_EDITOR
-            applyMouseRotation();
-        #endif
+        //#if UNITY_EDITOR
+        //    //applyMouseRotation();
+        //#endif
     }
 
     public bool getFallDeath()
@@ -141,11 +142,10 @@ public class OVRInterface : MonoBehaviour
             editorCam.SetActive(true);
             cameraRig.leftEyeAnchor.gameObject.SetActive(false);
             cameraRig.rightEyeAnchor.gameObject.SetActive(false);
-            Debug.Log("Playing in Editor");
+            //Debug.Log("Playing in Editor");
         }
         else
         {
-            editorCam.SetActive(false);
             Debug.Log("Playing in Game");
         }
     }
