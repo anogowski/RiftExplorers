@@ -14,7 +14,7 @@ public class FadingManager : MonoBehaviour {
         fadingIn = true;
         planePrefab.SetActive(true);
         player.GetComponent<OVRPlayerController>().enabled = false;
-        Debug.Log("Stop for load");
+        //Debug.Log("Stop for load");
     }
     public void Update()
     {
@@ -31,13 +31,13 @@ public class FadingManager : MonoBehaviour {
 
     void FadeToClear()
     {
-        Debug.Log("Fading to clear" + planePrefab.renderer.material.color.a);
+        //Debug.Log("Fading to clear" + planePrefab.renderer.material.color.a);
         planePrefab.renderer.material.color = 
             Color.Lerp(planePrefab.renderer.material.color, Color.clear, speed * Time.deltaTime);
     }
     void FadeToBlack()
     {
-        Debug.Log("Fading to black" + planePrefab.renderer.material.color.a);
+        //Debug.Log("Fading to black" + planePrefab.renderer.material.color.a);
         planePrefab.renderer.material.color =
             Color.Lerp(planePrefab.renderer.material.color, Color.black, speed * Time.deltaTime);
     }
@@ -56,7 +56,7 @@ public class FadingManager : MonoBehaviour {
         }
         if(planePrefab.renderer.material.color.a <= 0.05f)
         {
-            Debug.Log("GO");
+            //Debug.Log("GO");
             planePrefab.renderer.material.color = Color.clear;
             fadingIn = false;
             planePrefab.SetActive(false);
@@ -70,7 +70,7 @@ public class FadingManager : MonoBehaviour {
             planePrefab.SetActive(true);
             planePrefab.renderer.material.color = Color.clear;
             player.GetComponent<OVRPlayerController>().enabled = false;
-            Debug.Log("Stop for exit");
+            //Debug.Log("Stop for exit");
         }
 
         FadeToBlack();

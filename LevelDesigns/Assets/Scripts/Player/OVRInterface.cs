@@ -58,7 +58,7 @@ public class OVRInterface : MonoBehaviour
         bool fallDeath = false;
         if (isFalling())
         {
-            Debug.Log("I have fallen and I can't get up.");
+            //Debug.Log("I have fallen and I can't get up.");
             fallDeath = true;
             yPos = this.transform.position.y;
         }

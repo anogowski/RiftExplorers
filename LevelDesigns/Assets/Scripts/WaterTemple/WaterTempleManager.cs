@@ -116,7 +116,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Player height: " + player.transform.position.y);
+        //Debug.Log("Player height: " + player.transform.position.y);
        counter.Update();
        currentTime = counter.currentTime;
         //Debug.Log(counter.currentTime);
@@ -244,19 +244,19 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
     IEnumerator myMethod()
     {
-        Debug.Log("You're dead");
+        //Debug.Log("You're dead");
         startedCoroutine = true;
         FadingManager.fadingOut = true;
         eventSender.SendEvent(EventSystem.EventType.Player_Death);
         yield return new WaitForSeconds(2.5f);
 
-        Debug.Log("I waited");
+        //Debug.Log("I waited");
         GameObject wave = GameObject.FindGameObjectWithTag("Water");
         Transform wave1 = wave.transform.FindChild("Wave");
         Transform wave2 = wave.transform.FindChild("Water2");
         player.transform.position = originalPlayerPos;
-        Debug.Log("Player pos: " + player.transform.position);
-        Debug.Log("Origin pos: " + originalPlayerPos);
+        //Debug.Log("Player pos: " + player.transform.position);
+        //Debug.Log("Origin pos: " + originalPlayerPos);
         if (baseWave.activeInHierarchy)
         {
             wave1.transform.position = new Vector3(wave1.transform.position.x, -55.2f, wave1.transform.position.z);
