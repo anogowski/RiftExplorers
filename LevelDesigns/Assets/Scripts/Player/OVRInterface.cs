@@ -54,6 +54,40 @@ public class OVRInterface : MonoBehaviour
         #endif
     }
 
+
+    private void applyMouseRotation()
+    {
+        float xAxis = 0.0f;
+        float yAxis = 0.0f;
+
+        /**
+        xAxis = Input.GetAxis("Mouse X");
+        yAxis = Input.GetAxis("Mouse Y");
+        /**/
+
+        /**/
+        xAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
+        yAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightYAxis);
+        /**/
+
+        /**
+        cameraRig.transform.Rotate(MouseLook.Instance.classicGetRotation() * speed);
+        this.transform.Rotate(MouseLook.Instance.classicGetRotationX() * Time.deltaTime * (2 * speed));
+        /**/
+
+        /**/
+        cameraRig.transform.Rotate(new Vector3(-yAxis, 0, 0) * Time.deltaTime * speed);
+        this.transform.Rotate(new Vector3(0, xAxis, 0) * Time.deltaTime * (2 * speed));
+        /**/
+
+        /**
+        cameraRig.transform.localRotation = (MouseLook.Instance.getRotation());
+        this.transform.localRotation = (MouseLook.Instance.getRotationY());
+        /**/
+
+    }
+
+
     public bool getFallDeath()
     {
         bool fallDeath = false;
@@ -103,38 +137,6 @@ public class OVRInterface : MonoBehaviour
         }
     }
 
-    private void applyMouseRotation()
-    {
-        float xAxis = 0.0f;
-        float yAxis = 0.0f;
-
-        /**/
-        xAxis = Input.GetAxis("Mouse X");
-        yAxis = Input.GetAxis("Mouse Y");
-        /**/
-
-        /**
-        xAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
-        yAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
-        /**/
-
-        /**
-        cameraRig.transform.Rotate(MouseLook.Instance.classicGetRotation() * speed);
-        this.transform.Rotate(MouseLook.Instance.classicGetRotationX() * Time.deltaTime * (2 * speed));
-        /**/
-
-        /**/
-        cameraRig.transform.Rotate(new Vector3(-yAxis, 0, 0) * Time.deltaTime * speed);
-        this.transform.Rotate(new Vector3(0, xAxis, 0) * Time.deltaTime * (2 * speed));
-        /**/
-
-        /**
-        cameraRig.transform.localRotation = (MouseLook.Instance.getRotation());
-        this.transform.localRotation = (MouseLook.Instance.getRotationY());
-        /**/
-
-    }
-
     private void EditorTesting(bool inEditor)
     {
         if (inEditor)
@@ -152,7 +154,7 @@ public class OVRInterface : MonoBehaviour
 
     private void keyboardInput()
     {
-        bool escape = ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.escape);
+        bool escape = ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.Escape);
         if(escape)
         {
             #if UNITY_EDITOR
@@ -179,7 +181,7 @@ public class OVRInterface : MonoBehaviour
     //Interface to OVR Controller
     private void movement()
     {
-        if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.jump))
+        if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.Jump))
         {
             OVRContr.Jump();
         }

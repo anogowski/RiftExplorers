@@ -118,7 +118,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
        counter.Update();
        currentTime = counter.currentTime;
         //Debug.Log(counter.currentTime);
-        if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.interact))
+        if (ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.Interact))
         {
             Vector3 forward = playerControl.getForward();
             Vector3 position = playerControl.getPosition();
