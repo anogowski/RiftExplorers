@@ -83,6 +83,11 @@
     <Compile Include="Assets\Scripts\General\Fliparino.cs" />
     <Compile Include="Assets\Scripts\General\GameManager.cs" />
     <Compile Include="Assets\Scripts\General\Singleton.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\ChainLink.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\Direction.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\DrawChain.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\HookShot.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\Lerpable.cs" />
     <Compile Include="Assets\Scripts\Interface\Interact.cs" />
     <Compile Include="Assets\Scripts\MazeRoomScripts\BoulderScript.cs" />
     <Compile Include="Assets\Scripts\MazeRoomScripts\BoulderTriggerScript.cs" />
@@ -110,7 +115,6 @@
     <Compile Include="Assets\Scripts\WaterTemple\Appear.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\CompletedLevelScript.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\FloatingPlatforms.cs" />
-    <Compile Include="Assets\Scripts\WaterTemple\HookShot.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\SwitchTriggerScript.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\WaterBehavior.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\WaterTempleManager.cs" />

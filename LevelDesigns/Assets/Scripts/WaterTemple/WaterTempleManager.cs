@@ -45,7 +45,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         startedCoroutine = false;
     }
 
-  void EventListener.React(EventSystem.EventType eventType)
+    void EventListener.React(EventSystem.EventType eventType)
     {
         switch (eventType)
         {
@@ -61,7 +61,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
                 WaterFountain.Triggered = true;
                 break;
             case EventSystem.EventType.Player_Death:
-                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero, .9f);
+                AudioManager.Instance.PlaySounds(Sounds.WaterTempleDeath, SoundActions.Play, Vector3.zero, 1.0f);
                 attempts++;
                 break;
             case EventSystem.EventType.Checkpoint:
@@ -111,8 +111,6 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         }
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -132,10 +130,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
         if ((hookShot != null) && !waterActive)
         {
-            waterActive = true;
-
-            activateWater();
-            water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
+          //activateWater();  
         }
 
         bool val = playerControl.getFallDeath();
@@ -143,7 +138,6 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
         if(waterActive)
         {
-            activateBaseWater();          
             checkForDeath();
             checkForComplete();
         }
@@ -176,7 +170,9 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
     private void activateWater()
     {
-       Debug.Log("Activating water");
+       waterActive = true;
+       water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
+       //Debug.Log("Activating water");
 
        GameObject wave = GameObject.FindGameObjectWithTag("Water");
        Transform wave1 = wave.transform.FindChild("Wave");
@@ -187,6 +183,8 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
        wave2.GetComponent<Fliparino>().enabled = true;
        wave2.GetComponent<WaterBehavior>().enabled = true;
+
+       activateBaseWater();
 
     }
 
@@ -220,17 +218,17 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         {
             StartCoroutine(myMethod());
             
+            /**
             //die();
             //player.transform.position = originalPlayerPos;
             //wave1.transform.position = new Vector3(wave1.transform.position.x, -55.22f, wave1.transform.position.z);
             //wave2.transform.position = new Vector3(wave2.transform.position.x, -150.5f, wave2.transform.position.z);
             //baseWave.SetActive(false);
             //Appear.Triggered = false;
-
-            
             ////Debug.Log("Counter: " + attempts);
             ////have fade out here
             //eventSender.SendEvent(EventSystem.EventType.Player_Alive);
+             /* */
         }
     }
 

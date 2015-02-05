@@ -37,11 +37,11 @@ public class OVRInterface : MonoBehaviour
         MouseLook.Instance.setRotation(this.transform.localRotation);
 
         //EditorTesting(false);
-        //#if UNITY_EDITOR
-        //        //EditorTesting(true);
-        //#else
-        //        EditorTesting(false);
-        //#endif
+        #if UNITY_EDITOR
+                //EditorTesting(true);
+        #else
+                EditorTesting(false);
+        #endif
     }
 
     // Update is called once per frame
@@ -49,9 +49,9 @@ public class OVRInterface : MonoBehaviour
     {
         keyboardInput();
         movement();
-        //#if UNITY_EDITOR
-        //    //applyMouseRotation();
-        //#endif
+        #if UNITY_EDITOR
+           applyMouseRotation();
+        #endif
     }
 
     public bool getFallDeath()
