@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +60,6 @@
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
-     <None Include="Assets\Shader\MyShader.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
@@ -68,22 +67,22 @@
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-Water4.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
- <HintPath>C:/Users/ryan/Desktop/Everything Else/School/Winter 2015/Game Console/Rift Explorers/LevelDesigns/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ <HintPath>G:/AddOn/NormalOps/Dropbox/Neumont/Quarter 10/Game Consle Develpoment/Repo/LevelDesigns/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
- <HintPath>C:/Users/ryan/Desktop/Everything Else/School/Winter 2015/Game Console/Rift Explorers/LevelDesigns/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ <HintPath>G:/AddOn/NormalOps/Dropbox/Neumont/Quarter 10/Game Consle Develpoment/Repo/LevelDesigns/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
  </Reference>
  <Reference Include="UnityVS.VersionSpecific">
- <HintPath>C:/Users/ryan/Desktop/Everything Else/School/Winter 2015/Game Console/Rift Explorers/LevelDesigns/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+ <HintPath>G:/AddOn/NormalOps/Dropbox/Neumont/Quarter 10/Game Consle Develpoment/Repo/LevelDesigns/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ <HintPath>G:/AddOn/School/Editor/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

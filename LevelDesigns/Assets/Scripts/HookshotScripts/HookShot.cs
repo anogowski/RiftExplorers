@@ -24,18 +24,51 @@ public class HookShot : MonoBehaviour, IInteractable
 
     EventSender eventSender = new EventSender();
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-       // eventSender.Subscribe(WaterTempleManager.Instance);
+        eventSender.Subscribe(WaterTempleManager.Instance);
         hook = GameObject.FindGameObjectWithTag("Hook");
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-        
-	}
+        if (lerping)
+        {
+            Vector3 newPosition = lerp(startTime, fullLength, speed, startPosition, targetPosition);
+            user.transform.position = newPosition;
+            float gap = Vector3.Magnitude(newPosition - targetPosition);
+            if (gap <= offSet)
+            {
+                lerping = false;
+                targetPosition = Vector3.zero;
+                AudioManager.Instance.StopSound(chainSound);
+            }
+        }
+        else
+        {
+            if (!lerping && ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.Fire) && user != null)
+            {
+                startTime = Time.time;
+                startPosition = user.transform.position;
+                OVRInterface ovrInt = user.GetComponent<OVRInterface>();
+                targetPosition = getTargetPosition(user.transform.position, ovrInt.getForward());
+                if (targetPosition != Vector3.zero && withInRange(targetPosition, this.transform.position))
+                {
+
+                    lerping = true;
+                    fullLength = Vector3.Magnitude(startPosition - targetPosition);
+                    PlayChainSound();
+                }
+                else
+                {
+                    Debug.Log("No Hook-Loop found");
+                }
+            }
+
+        }
+    }
 
     private bool withInRange(Vector3 hitPosition, Vector3 startPosition)
     {
@@ -47,9 +80,14 @@ public class HookShot : MonoBehaviour, IInteractable
         Vector3 targetPoint = Vector3.zero;
         RaycastHit hit;
         Ray ray = new Ray(position, forward);
-        if(Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit))
         {
-            
+            if (hit.transform.gameObject.tag.Equals("HookLoop"))
+            {
+                targetPoint = hit.transform.position;
+                Debug.Log("Hook-Loop found");
+                AudioManager.Instance.PlaySounds(Sounds.Clang, SoundActions.Play, targetPoint);
+            }
         }
         return targetPoint;
     }
@@ -70,8 +108,8 @@ public class HookShot : MonoBehaviour, IInteractable
         if (user.tag.Equals("Player"))
         {
 
-            disableCoalition();
-            this.user = (OVRInterface) GameObject.FindGameObjectWithTag("Player").GetComponent<OVRInterface>();
+            disableColition();
+            this.user = (OVRInterface)GameObject.FindGameObjectWithTag("Player").GetComponent<OVRInterface>();
             this.user.pickUP(Hand.Left, this.gameObject);
             eventSender.SendEvent(EventSystem.EventType.Get_Item);
 
@@ -81,17 +119,12 @@ public class HookShot : MonoBehaviour, IInteractable
 
     private void PlayChainSound()
     {
-       GameObject player = GameObject.FindGameObjectWithTag("Player");
-       chainSound =  AudioManager.Instance.PlaySounds(Sounds.Chain, SoundActions.Loop, player.transform.position);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        chainSound = AudioManager.Instance.PlaySounds(Sounds.Chain, SoundActions.Loop, player.transform.position);
     }
 
-    private void disableCoalition()
+    private void disableColition()
     {
         (this.transform.GetComponent<CapsuleCollider>() as CapsuleCollider).enabled = false;
-    }
-
-    private void reset()
-    {
-
     }
 }

@@ -38,7 +38,7 @@ public class OVRInterface : MonoBehaviour
 
         //EditorTesting(false);
         #if UNITY_EDITOR
-                //EditorTesting(true);
+                EditorTesting(true);
         #else
                 EditorTesting(false);
         #endif
