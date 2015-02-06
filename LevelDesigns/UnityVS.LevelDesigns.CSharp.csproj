@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Player\OVRControlInterface.cs" />
     <Compile Include="Assets\Scripts\Player\OVRController.cs" />
     <Compile Include="Assets\Scripts\Player\OVRInterface.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerDamage.cs" />
     <Compile Include="Assets\Scripts\SoundSystem\AudioManager.cs" />
     <Compile Include="Assets\Scripts\SoundSystem\SoundActions.cs" />
     <Compile Include="Assets\Scripts\SoundSystem\Sounds.cs" />
@@ -121,7 +122,6 @@
     <Compile Include="Assets\Scripts\WaterTemple\WaterTempleManager.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\WaterValve.cs" />
     <Compile Include="Assets\Scripts\WaterTemple\wiggle.cs" />
-    <Compile Include="Assets\Scripts\WaterTrapScripts\FallingPlatform.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
@@ -129,7 +129,6 @@
     <None Include="Assets\Plugins\donotdelete.txt" />
     <None Include="Assets\Plugins\x86\donotdelete.txt" />
     <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
-    <None Include="Assets\Shader\MyShader.shader" />
     <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
     <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
