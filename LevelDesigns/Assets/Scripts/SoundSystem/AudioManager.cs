@@ -20,6 +20,7 @@ public class AudioManager : Singleton<AudioManager>
         clips.Add((AudioClip)Resources.Load("level_complete", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("JamieScream", typeof(AudioClip)));
         clips.Add((AudioClip)Resources.Load("valve", typeof(AudioClip)));
+        clips.Add((AudioClip)Resources.Load("hurt", typeof(AudioClip)));
 
 
     }
@@ -31,6 +32,9 @@ public class AudioManager : Singleton<AudioManager>
 
         switch (sound)
         {
+            case Sounds.Player_Hurt:
+                clip = clips.Find(n => n.name.Equals("hurt"));
+                break;
             case Sounds.Hallelujah:
                 clip = clips.Find(n => n.name.Equals("Hallelujah"));
                 break;
