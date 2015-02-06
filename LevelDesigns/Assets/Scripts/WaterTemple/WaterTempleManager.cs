@@ -43,6 +43,13 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         playerGUI = GameObject.FindGameObjectWithTag("UI").GetComponent<GUIv1>();
         waterActive = false;
         startedCoroutine = false;
+        string state = PlayerPrefs.GetString("GameState", "Start");
+        if (state.Equals("Playing"))
+        {
+            attempts = PlayerPrefs.GetInt("CurrentAttempts", attempts);
+            currentTime = PlayerPrefs.GetInt("CurrentTime", currentTime);
+        }
+
     }
 
     void EventListener.React(EventSystem.EventType eventType)
@@ -247,6 +254,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         FadingManager.fadingOut = true;
         eventSender.SendEvent(EventSystem.EventType.Player_Death);
         yield return new WaitForSeconds(2.5f);
+        saveCurrent();
 
         //Debug.Log("I waited");
         GameObject wave = GameObject.FindGameObjectWithTag("Water");
@@ -268,5 +276,19 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         //live();
         eventSender.SendEvent(EventSystem.EventType.Player_Alive);
         startedCoroutine = false;
+    }
+    private void saveCurrent()
+    {
+        PlayerPrefs.SetString("GameState", "Playing");
+        PlayerPrefs.SetInt("CurrentTime", currentTime);
+        PlayerPrefs.SetInt("CurrentAttempts", attempts);
+        Application.LoadLevel(0);
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetString("GameState", "Start");
+        PlayerPrefs.SetInt("CurrentTime", 3600);
+        PlayerPrefs.SetInt("CurrentAttempts", 0);
     }
 }

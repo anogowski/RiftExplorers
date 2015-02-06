@@ -8,6 +8,7 @@ public class FadingManager : MonoBehaviour {
     private float speed = 1f;
     public static bool fadingIn = false;
     public static bool fadingOut = false;
+    public Camera cameraFacing;
 
     public void Start()
     {
@@ -44,6 +45,9 @@ public class FadingManager : MonoBehaviour {
 
     public void FadeInScene()
     {
+        transform.position = cameraFacing.transform.position + cameraFacing.transform.rotation * Vector3.forward * 0.1f;
+        transform.LookAt(cameraFacing.transform.position);
+        transform.Rotate(0f, 180f, 0f);
         FadeToClear();
         //if (planePrefab.renderer.material.color.a < .25f)
         //{
@@ -69,7 +73,7 @@ public class FadingManager : MonoBehaviour {
         {
             planePrefab.SetActive(true);
             planePrefab.renderer.material.color = Color.clear;
-            //player.GetComponent<OVRPlayerController>().enabled = false;
+            player.GetComponent<OVRPlayerController>().enabled = false;
             //Debug.Log("Stop for exit");
         }
 
