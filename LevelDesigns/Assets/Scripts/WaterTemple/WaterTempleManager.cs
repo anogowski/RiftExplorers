@@ -178,7 +178,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
     private void activateWater()
     {
        waterActive = true;
-       water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero);
+       water = AudioManager.Instance.PlaySounds(Sounds.Water, SoundActions.Loop, Vector3.zero, 0.3f);
        //Debug.Log("Activating water");
 
        GameObject wave = GameObject.FindGameObjectWithTag("Water");
@@ -282,6 +282,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         PlayerPrefs.SetString("GameState", "Playing");
         PlayerPrefs.SetInt("CurrentTime", currentTime);
         PlayerPrefs.SetInt("CurrentAttempts", attempts);
+        WaterFountain.Triggered = false;
         Application.LoadLevel(0);
     }
 

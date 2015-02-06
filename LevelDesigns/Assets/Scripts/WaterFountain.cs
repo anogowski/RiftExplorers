@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaterFountain : MonoBehaviour {
 
-  public  ParticleSystem p;
+    public ParticleSystem p;
     public static bool Triggered = false;
     void Start()
     {
@@ -20,6 +20,10 @@ public class WaterFountain : MonoBehaviour {
         if (Triggered)
         {
             Play();
+        }
+        else
+        {
+            p.Stop();
         }
     }
 }

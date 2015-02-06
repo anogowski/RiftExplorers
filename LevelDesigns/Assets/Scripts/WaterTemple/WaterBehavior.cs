@@ -8,6 +8,7 @@ public class WaterBehavior : MonoBehaviour {
     private bool isFilled = false;
     EventSender eventSender = new EventSender();
     private GameObject player;
+    public float scale;
 
 	// Use this for initialization
 	void Start () {
@@ -24,24 +25,34 @@ public class WaterBehavior : MonoBehaviour {
 		if(!Appear.Triggered)
 		{
             //platforms
-            this.transform.position += new Vector3(0f, 0.0075f, 0f);
+            if (player.transform.position.y < 5f)
+                this.transform.position += new Vector3(0f, 0.005f, 0f);
+            else if (player.transform.position.y < 95)
+                this.transform.position += new Vector3(0f, 0.0075f, 0f);
+            else
+                this.transform.position += new Vector3(0f, 0.01f, 0f);
+
+            if(player.transform.position.y > 2f && player.transform.position.y < 15f)
+            {
+                this.transform.position += new Vector3(0f, .005f, 0f);
+            }
 
             //while hookshotting
-            if(player.transform.position.y > -40f && player.transform.position.y < 1.5f)
+            if(player.transform.position.y > -39f && player.transform.position.y < 1.75f)
             {
-                this.transform.position += new Vector3(0f, 0.21f, 0f);
+                this.transform.position += new Vector3(0f, scale, 0f);
             }
-            if (player.transform.position.y > 16f && player.transform.position.y < 43f)
+            if (player.transform.position.y > 18f && player.transform.position.y < 43f)
             {
-                this.transform.position += new Vector3(0f, 0.15f, 0f);
+                this.transform.position += new Vector3(0f, scale * 0.8f, 0f);
             }
             if (player.transform.position.y > 68f && player.transform.position.y < 81f)
             {
-                this.transform.position += new Vector3(0f, 0.15f, 0f);
+                this.transform.position += new Vector3(0f, scale * 0.8f, 0f);
             }
-            if (player.transform.position.y > 97.5f && player.transform.position.y < 130f)
+            if (player.transform.position.y > 97.5f && player.transform.position.y < 134f)
             {
-                this.transform.position += new Vector3(0f, 0.2f, 0f);
+                this.transform.position += new Vector3(0f, scale, 0f);
             }
 
 		}
