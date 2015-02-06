@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class PlayerDamage : MonoBehaviour
 {
-    GameObject wave;
-    Transform waveHeight;
-    GameObject player;
-    Vector3 playerHeight;
+    private GameObject wave;
+    private Transform waveHeight;
+    private GameObject player;
+    private Vector3 playerHeight;
     public GameObject plane;
-    bool played = false;
-    public static bool dead = false;
-    int count = 0;
 
+    private int count = 0;
+
+    private bool played = false;
+    public static bool dead = false;
+    
+    private Stopwatch stopwatch = new Stopwatch();
+
+    private const float TIME = 500f;
     void Start()
     {
         wave = GameObject.FindGameObjectWithTag("Water");
@@ -21,22 +27,26 @@ public class PlayerDamage : MonoBehaviour
     }
 
 
-    IEnumerator playerHurt()
+    private void playerHurt()
     {
         if (!played)
         {
             played = true;
             plane.SetActive(true);
             AudioManager.Instance.PlaySounds(Sounds.Player_Hurt, SoundActions.Play, plane.transform.position);
+            stopwatch.Start();
         }
-        yield return new WaitForSeconds(2f);
-        played = false;
-        plane.SetActive(false);
-        count++;
-        if (count >= 5)
+        if (stopwatch.Elapsed.TotalMilliseconds > TIME)
         {
-            dead = true;
-            count = 0;
+            played = false;
+            plane.SetActive(false);
+            count++;
+            if (count >= 5)
+            {
+                dead = true;
+                count = 0;
+            }
+            stopwatch.Reset();
         }
     }
 
@@ -44,9 +54,20 @@ public class PlayerDamage : MonoBehaviour
     void Update()
     {
         findHeight();
-        if (playerHeight.y < waveHeight.position.y )
+        //Debug.Log("Player: " + playerHeight.y);
+        //Debug.Log("Wave: " + waveHeight.position.y);
+        //UnityEngine.Debug.Log("Time:" + stopwatch.Elapsed.TotalMilliseconds);
+        if (playerHeight.y <= waveHeight.position.y && stopwatch.Elapsed.TotalMilliseconds <= TIME)
         {
             playerHurt();
+        }
+        else
+        {
+            plane.SetActive(false);
+        }
+        if(stopwatch.Elapsed.TotalMilliseconds > TIME)
+        {
+            stopwatch.Reset();
         }
     }
 

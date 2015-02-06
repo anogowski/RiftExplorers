@@ -137,7 +137,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
 
         if ((hookShot != null) && !waterActive)
         {
-          //activateWater();  
+          activateWater();  
         }
 
         bool val = playerControl.getFallDeath();
@@ -221,7 +221,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         Transform wave1 = wave.transform.FindChild("Wave");
         Transform wave2 = wave.transform.FindChild("Water2");
 
-        if (player.transform.position.y + 0.545f <= wave1.transform.position.y && !startedCoroutine)
+        if (player.transform.position.y + 0.545f <= wave1.transform.position.y && !startedCoroutine && PlayerDamage.dead)
         {
             StartCoroutine(myMethod());
             
