@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\SoundSystem\SoundActions.cs" />
     <Compile Include="Assets\Scripts\SoundSystem\Sounds.cs" />
     <Compile Include="Assets\Scripts\TempStuff\TempDoorToMaze.cs" />
+    <Compile Include="Assets\Scripts\Text\AIMHERE.cs" />
     <Compile Include="Assets\Scripts\Text\ClearSignTitle.cs" />
     <Compile Include="Assets\Scripts\Text\Count_Death.cs" />
     <Compile Include="Assets\Scripts\Text\DisplayText.cs" />
