@@ -60,12 +60,12 @@ public class OVRInterface : MonoBehaviour
         float xAxis = 0.0f;
         float yAxis = 0.0f;
 
-        /**
+        /**/
         xAxis = Input.GetAxis("Mouse X");
         yAxis = Input.GetAxis("Mouse Y");
         /**/
 
-        /**/
+        /**
         xAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
         yAxis = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightYAxis);
         /**/
