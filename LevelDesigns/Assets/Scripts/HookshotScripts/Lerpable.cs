@@ -1,27 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Lerpable : MonoBehaviour {
+public class Lerpable : MonoBehaviour 
+{
 
     public bool autoStart;
-
-    private bool lerping;
-
-    private Vector3 startPosition;
-    private Vector3 currentPosition;
+    public bool landed;
+    public bool lerping;
 
     public float speed;
     public float limit;
 
-    float startTime;
-    float fullLength;
+    private LerpType lerpType;
+
+    private Vector3 startPosition;
+    private Vector3 currentPosition;
+    private Vector3 endPosition;
+
+    private Transform parent;
+
+    private float startTime;
+    private float length;
+
+    private float fullLength;
 
     /**/
 	// Use this for initialization
 	void Start () {
         if (autoStart)
         {
-            lerping = true;
+            startLerp(LerpType.Forward, Vector3.zero);
+            //lerping = true;
         }
 	}
 	/**/
@@ -29,72 +38,104 @@ public class Lerpable : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (lerping)
+
+        if (lerping & !landed)
         {
-            bool move = withInRange(this.transform.position, startPosition);
-            if (move)
+            if (lerpType == LerpType.Forward)
             {
-                lerp();
+                bool move = withInRange(this.transform.position, startPosition, limit);
+                if (move)
+                {
+                    lerp();
+                }
+                else
+                {
+                    stop();
+                }
             }
-            else
+            else if (lerpType == LerpType.PointToPoint)
             {
-                stop();
+                pointLerp();
             }
-            
         }
+        
 	}
 
-    void OnCollisionEnter(Collision collision)
+    private void deParent()
     {
-        stop();
+        parent = this.gameObject.transform.parent;
+        this.gameObject.transform.parent = null;
     }
 
-    private void stop()
+    private void reparent()
     {
-        lerping = false;
+        if (parent != null)
+        {
+            this.gameObject.transform.parent = parent;
+        }
+    }
+
+    public void startLerp(LerpType type, Vector3 endPoint)
+    {
+        lerping = true;
+        landed = false;
+        lerpType = type;
+        endPosition = endPoint;
+        startTime = Time.time;
+        deParent();
+        startPosition = this.gameObject.transform.position;
+        length = Vector3.Magnitude(startPosition - endPoint);
     }
 
     private void lerp()
     {
-        this.gameObject.transform.Translate(this.gameObject.transform.forward * Time.deltaTime * speed);
+        Vector3 forward = this.gameObject.transform.forward;
+        this.gameObject.transform.Translate((this.gameObject.transform.forward) * (Time.deltaTime * speed));
+        Debug.Log("Forward vec3: " + forward);
     }
 
-    private Vector3 getForward()
+    private void pointLerp()
     {
-        return Vector3.zero;
-    }
-
-    public void startLerp()
-    {
-        lerping = true;
-        this.gameObject.transform.parent = null;
-        startPosition = this.gameObject.transform.position;
-
-    }
-
-    private Vector3 getTargetPosition(Vector3 position, Vector3 forward)
-    {
-        Vector3 targetPoint = Vector3.zero;
-        RaycastHit hit;
-        Ray ray = new Ray(position, forward);
-        if (Physics.Raycast(ray, out hit))
+        this.gameObject.transform.position = lerp(startTime, length, speed, startPosition, endPosition);
+        if(withInRange(this.gameObject.transform.position, endPosition, limit))
         {
-            
+            stop();
+            reset();
         }
-        return targetPoint;
     }
 
-    private bool withInRange(Vector3 hitPosition, Vector3 startPosition)
+    private Vector3 lerp(float startTime, float legnth, float speed, Vector3 start, Vector3 end)
     {
-        return ((hitPosition - startPosition).magnitude < limit);
-    }
-
-    private Vector3 lerp(float startime, float legnth, float speed, Vector3 start, Vector3 end)
-    {
-        float distCovered = ((Time.time - startime) * speed);
+        float distCovered = ((Time.time - startTime) * speed);
         float percentOfJourney = distCovered / legnth;
         //Debug.Log("distCovered: " + distCovered);
         //Debug.Log("percentOfJourney: " + percentOfJourney);
         return Vector3.Lerp(start, end, percentOfJourney);
     }
+
+    private bool withInRange(Vector3 current, Vector3 end, float limit)
+    {
+        return ((current - end).magnitude < limit);
+    }
+
+    public void stop()
+    {
+        lerping = false;
+
+    }
+
+    public void reset()
+    {
+        //this.gameObject.transform.parent = parent;
+        reparent();
+        this.gameObject.transform.localPosition = Vector3.zero;
+        this.gameObject.transform.localRotation = Quaternion.identity;
+    }
+
+    private Vector3 getForward()
+    {
+        return this.transform.forward;
+    }
+
+    
 }

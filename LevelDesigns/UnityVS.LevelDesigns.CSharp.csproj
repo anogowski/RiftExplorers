@@ -84,10 +84,13 @@
     <Compile Include="Assets\Scripts\General\GameManager.cs" />
     <Compile Include="Assets\Scripts\General\Singleton.cs" />
     <Compile Include="Assets\Scripts\HookshotScripts\ChainLink.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\CollitionScript.cs" />
     <Compile Include="Assets\Scripts\HookshotScripts\Direction.cs" />
     <Compile Include="Assets\Scripts\HookshotScripts\DrawChain.cs" />
     <Compile Include="Assets\Scripts\HookshotScripts\HookShot.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\LerpType.cs" />
     <Compile Include="Assets\Scripts\HookshotScripts\Lerpable.cs" />
+    <Compile Include="Assets\Scripts\HookshotScripts\Trailer.cs" />
     <Compile Include="Assets\Scripts\Interface\Interact.cs" />
     <Compile Include="Assets\Scripts\MazeRoomScripts\BoulderScript.cs" />
     <Compile Include="Assets\Scripts\MazeRoomScripts\BoulderTriggerScript.cs" />

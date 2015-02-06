@@ -131,7 +131,7 @@ public class OVRInterface : MonoBehaviour
         }
         else if(hand == Hand.right)
         {
-            obj.transform.parent = Left_Hand.transform;
+            obj.transform.parent = Right_Hand.transform;
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
         }
@@ -165,11 +165,16 @@ public class OVRInterface : MonoBehaviour
         }
     }
 
+    public void lockDown(bool enable)
+    {
+        OVRContr.enabled = false;
+    }
+
     public Vector3 getForward()
     {
         //return cameraRig.centerEyeAnchor.forward;
         Vector3 forward = CenterEye.transform.forward;
-        Debug.Log("Forward Vector 3: " + forward);
+        //Debug.Log("Forward Vector 3: " + forward);
         return forward;
     }
 

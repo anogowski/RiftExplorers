@@ -126,7 +126,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
             interact(forward, position);
         }
 
-        Transform hookShot = GameObject.FindGameObjectWithTag("Left_Hand").transform.FindChild("HookShot");
+        Transform hookShot = GameObject.FindGameObjectWithTag("HookShot").gameObject.transform;
 
         if ((hookShot != null) && !waterActive)
         {

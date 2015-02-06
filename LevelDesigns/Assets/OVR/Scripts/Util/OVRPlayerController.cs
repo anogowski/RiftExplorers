@@ -214,7 +214,7 @@ public class OVRPlayerController : MonoBehaviour
 		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 		// Run!
-		if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+		if (dpad_move || ActionInput.Instance.checkAction(ActionInput.ActionsToTrack.Sprint))
 			moveInfluence *= 2.0f;
 
 		if (DirXform != null)
