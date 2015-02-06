@@ -221,7 +221,7 @@ public class WaterTempleManager : Singleton<WaterTempleManager>, EventSystem.Eve
         Transform wave1 = wave.transform.FindChild("Wave");
         Transform wave2 = wave.transform.FindChild("Water2");
 
-        if (player.transform.position.y + 0.545f <= wave1.transform.position.y && !startedCoroutine && PlayerDamage.dead)
+        if ((player.transform.position.y + 0.545f <= wave1.transform.position.y || PlayerDamage.dead) && !startedCoroutine)
         {
             StartCoroutine(myMethod());
             

@@ -24,15 +24,7 @@ public class WaterBehavior : MonoBehaviour {
 		if(!Appear.Triggered)
 		{
             //platforms
-            if (player.transform.position.y < -40f)
-            {
-                this.transform.position += new Vector3(0f, 0.005f, 0f);
-            }
-            else
-            {
-                this.transform.position += new Vector3(0f, 0.01f, 0f);
-            }
-            
+            this.transform.position += new Vector3(0f, 0.0075f, 0f);
 
             //while hookshotting
             if(player.transform.position.y > -40f && player.transform.position.y < 1.5f)
